@@ -1,0 +1,91 @@
+
+
+CREATE TABLE SUPPLIERREVIEWS
+(
+	REVIEWID INT PRIMARY KEY IDENTITY(1,1),
+	RATING DECIMAL(2,1) NOT NULL,
+	COMMENT VARCHAR(100) NOT NULL,
+	REVIEWDATE DATE NOT NULL,
+	SUPPLIERID INT,
+	FOREIGN KEY (SUPPLIERID) REFERENCES SUPPLIER(SUPPLIERID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
+	USERID INT,
+	FOREIGN KEY (USERID) REFERENCES USERS(USERID)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+)
+
+
+SELECT * FROM SUPPLIERREVIEWS
+
+
+INSERT INTO SUPPLIERREVIEWS (RATING, COMMENT, REVIEWDATE, SUPPLIERID, USERID) VALUES
+(2.4, 'Highly recommend', '2022-03-23', 1, 5),
+(2.2, 'Great value for money', '2023-06-06', 1, 4),
+(2.9, 'Not satisfied', '2022-05-21', 1, 7),
+(1.8, 'Great value for money', '2023-02-02', 1, 2),
+(4.3, 'Would buy again', '2023-06-12', 2, 6),
+(4.1, 'Highly recommend', '2023-07-24', 2, 10),
+(4.3, 'Not satisfied', '2022-08-23', 2, 9),
+(2.4, 'Too expensive', '2024-03-17', 2, 10),
+(1.7, 'Would buy again', '2022-06-17', 2, 8),
+(1.6, 'Loved the design', '2024-05-01', 3, 3),
+(1.5, 'Too expensive', '2023-08-19', 3, 2),
+(3.3, 'Highly recommend', '2022-10-04', 3, 1),
+(1.5, 'Terrible experience', '2022-06-11', 3, 10),
+(4.6, 'Battery life is amazing', '2023-07-17', 4, 1),
+(3.9, 'Not satisfied', '2023-12-03', 4, 6),
+(3.6, 'Terrible experience', '2024-08-02', 4, 1),
+(2.6, 'Highly recommend', '2022-10-12', 4, 6),
+(3.7, 'Great value for money', '2023-12-06', 4, 9),
+(1.0, 'Battery life is amazing', '2023-05-05', 5, 3),
+(3.6, 'Too expensive', '2023-07-01', 5, 2),
+(2.6, 'Highly recommend', '2022-09-16', 5, 4),
+(1.7, 'Great value for money', '2023-12-22', 5, 9),
+(1.7, 'Great value for money', '2023-06-28', 6, 1),
+(3.1, 'Would buy again', '2023-12-09', 6, 5),
+(4.8, 'Great value for money', '2024-07-14', 6, 10),
+(1.3, 'Would buy again', '2022-07-15', 6, 6),
+(3.4, 'Would buy again', '2023-02-08', 7, 8),
+(3.8, 'Okay but could be better', '2022-01-10', 7, 6),
+(4.9, 'Okay but could be better', '2024-01-18', 7, 4),
+(3.5, 'Battery life is amazing', '2023-01-19', 7, 2),
+(4.4, 'Excellent product', '2023-09-22', 7, 4),
+(1.5, 'Too expensive', '2024-04-20', 8, 4),
+(1.5, 'Not satisfied', '2022-08-22', 8, 5),
+(2.9, 'Terrible experience', '2024-02-03', 8, 4),
+(2.4, 'Okay but could be better', '2023-06-20', 8, 3),
+(1.8, 'Excellent product', '2024-04-19', 8, 8),
+(3.8, 'Great value for money', '2022-02-09', 9, 5),
+(1.3, 'Terrible experience', '2024-04-03', 9, 1),
+(3.6, 'Too expensive', '2022-10-28', 9, 8),
+(1.4, 'Excellent product', '2023-11-04', 9, 2),
+(3.2, 'Too expensive', '2022-11-26', 9, 8),
+(1.6, 'Loved the design', '2022-03-09', 10, 10),
+(5.0, 'Too expensive', '2022-03-22', 10, 10),
+(3.7, 'Terrible experience', '2024-07-06', 10, 5),
+(4.5, 'Would buy again', '2024-08-05', 10, 2),
+(4.3, 'Loved the design', '2023-03-24', 10, 8),
+(1.1, 'Highly recommend', '2022-06-08', 11, 1),
+(2.6, 'Okay but could be better', '2024-02-18', 11, 3),
+(3.5, 'Too expensive', '2022-01-19', 11, 1),
+(4.9, 'Not satisfied', '2023-02-05', 11, 8),
+(4.4, 'Not satisfied', '2024-01-05', 12, 1),
+(3.3, 'Terrible experience', '2023-06-09', 12, 2),
+(1.1, 'Okay but could be better', '2023-04-18', 12, 5),
+(1.7, 'Too expensive', '2023-03-13', 12, 6),
+(1.7, 'Not satisfied', '2024-07-31', 13, 6),
+(3.1, 'Not satisfied', '2023-11-17', 13, 2),
+(5.0, 'Too expensive', '2024-05-21', 13, 5),
+(3.4, 'Great value for money', '2024-04-01', 13, 3),
+(4.0, 'Highly recommend', '2023-12-23', 13, 1),
+(2.3, 'Excellent product', '2024-01-01', 14, 4),
+(2.6, 'Loved the design', '2022-06-06', 14, 4),
+(1.8, 'Too expensive', '2023-04-14', 14, 10),
+(4.8, 'Terrible experience', '2023-11-06', 14, 10),
+(4.9, 'Highly recommend', '2022-06-20', 15, 9),
+(2.0, 'Would buy again', '2022-04-24', 15, 3),
+(1.0, 'Highly recommend', '2023-12-11', 15, 6),
+(2.9, 'Would buy again', '2024-05-03', 15, 7),
+(1.3, 'Not satisfied', '2023-07-28', 15, 2);
