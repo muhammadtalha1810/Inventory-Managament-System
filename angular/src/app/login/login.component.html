@@ -1,0 +1,8 @@
+<form (submit)="onSubmit($event)">
+    <input type="text" placeholder="Username" name="username" [(ngModel)]="username">
+    <input type="password" placeholder="Password" name="password" [(ngModel)]="password">
+    <button type="submit" >Login</button>
+    <p>Don't have an account? <a routerLink="/register">Register</a></p>
+    <p>Forgot username/password? <a routerLink="/reset-password">Reset Password</a></p>
+    <p id="error-message">{{errorMessage}}</p>
+</form>

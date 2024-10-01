@@ -1,0 +1,10 @@
+#dashboard-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+h1{
+    font-size: 2rem;
+    color: #333;
+}
