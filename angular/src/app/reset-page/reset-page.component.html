@@ -1,1 +1,7 @@
-<p>reset-page works!</p>
+<form (submit)="onSubmit($event)">
+    <p>Enter your email to reset your password</p>
+    <input type="email" placeholder="Email" name="email">
+    <button type="submit" >Reset Password</button>
+    <p>Back to <a routerLink="/login">Login</a></p>
+    <p id="error-message">{{errorMessage}}</p>
+</form>

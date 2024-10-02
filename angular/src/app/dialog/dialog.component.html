@@ -1,0 +1,10 @@
+<div [class]="className">
+    <div id="dialog-container">
+        <h5>{{title}}</h5>
+        <p>{{message}}</p>
+        <div id="button-container">
+            <button id="primary-button" (click)="primary_click()">{{primaryButtonText}}</button>
+            <button id="secondary-button" (click)="secondary_click()">{{cancelButtonText}}</button>
+        </div>
+    </div>
+</div>

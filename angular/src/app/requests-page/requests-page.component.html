@@ -1,1 +1,10 @@
-<p>requests-page works!</p>
+<div id="requests-list">
+    <div id="request-item" *ngFor="let request of requests">
+        <p id="request-name">{{request}}</p>
+        <div id="right-container">
+            <button id="approve-button" (click)="openDialog()">Approve</button>
+            <button id="decline-button">Decline</button>
+        </div>
+    </div>
+</div>
+<app-dialog [className]="dialog_class" [title]="'Approve Request'" [message]="'Are you sure you want to approve this request?'" [primaryButtonText]="'Approve'" [cancelButtonText]="'Cancel'"></app-dialog>
