@@ -1,3 +1,25 @@
 <div id="main-container">
-    <h1>Inventory Page</h1>
+    <div id="collapsible-container">
+        <button id="header-button"  (click)="this.isAddEntitiesOpened = !this.isAddEntitiesOpened;">
+            <span id="plus-minus-sign" [textContent]="isAddEntitiesOpened ? '-' : '+' "></span>
+            <span>Add Entities</span>
+        </button>
+        <div id="content-container" [ngClass]="{'hidden': !isAddEntitiesOpened}">
+            <p>Add Stocks</p>
+            <p>Add Brands</p>
+            <p>Add Models</p>
+            <p>Add Variants</p>
+            <p>Add Manufacturers</p>
+        </div>
+    </div>
+    <div id="collapsible-container">
+        <button id="header-button" (click)="this.isViewEntitiesOpened = !this.isViewEntitiesOpened;">View Entities</button>
+        <div id="content-container" [ngClass]="{'hidden': !isViewEntitiesOpened}">
+            <p>View Stocks</p>
+            <p>View Brands</p>
+            <p>View Models</p>
+            <p>View Variants</p>
+            <p>View Manufacturers</p>
+        </div>
+    </div>
 </div>

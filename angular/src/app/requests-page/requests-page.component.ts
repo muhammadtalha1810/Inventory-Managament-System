@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -10,10 +10,17 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrl: './requests-page.component.css'
 })
 export class RequestsPageComponent{
-  dialog_class: string = "hidden";
+  @ViewChild(DialogComponent) dialog : any;
   requests: any[] = ["Account Request", "Account Request", "Permission Request", "Custom Order Request", "Account Request", "Account Request", "Permission Request", "Custom Order Request", "Account Request", "Account Request", "Permission Request", "Custom Order Request"];
-  openDialog(){
-    this.dialog_class = "visible";
+  openApproveDialog(){
+    this.dialog.setDetails("Approve Request", "Are you sure you want to approve this request?", "Approve", "Cancel");
+    this.dialog.openDialog();
   }
-
+  openDeclineDialog(){
+    this.dialog.setDetails("Decline Request", "Are you sure you want to decline this request?", "Decline", "Cancel");
+    this.dialog.openDialog();
+  }
+  handleDialogResult(result: string){
+    console.log(result); //primary or secondary
+  }
 }

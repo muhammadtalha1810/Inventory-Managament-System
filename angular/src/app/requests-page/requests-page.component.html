@@ -2,9 +2,9 @@
     <div id="request-item" *ngFor="let request of requests">
         <p id="request-name">{{request}}</p>
         <div id="right-container">
-            <button id="approve-button" (click)="openDialog()">Approve</button>
-            <button id="decline-button">Decline</button>
+            <button id="approve-button" (click)="openApproveDialog()">Approve</button>
+            <button id="decline-button" (click)="openDeclineDialog()">Decline</button>
         </div>
     </div>
 </div>
-<app-dialog [className]="dialog_class" [title]="'Approve Request'" [message]="'Are you sure you want to approve this request?'" [primaryButtonText]="'Approve'" [cancelButtonText]="'Cancel'"></app-dialog>
+<app-dialog (dialogresult)="handleDialogResult($event)"></app-dialog>

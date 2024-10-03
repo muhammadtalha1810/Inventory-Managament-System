@@ -23,4 +23,13 @@ export class DialogComponent {
     this.dialogresult.emit("secondary");
     this.className = 'hidden';
   }
+  openDialog(){
+    this.className = 'visible';
+  }
+  setDetails(title: string, message: string, primaryButtonText: string, cancelButtonText: string){
+    this.title = title;
+    this.message = message;
+    this.primaryButtonText = primaryButtonText;
+    this.cancelButtonText = cancelButtonText;
+  }
 }
