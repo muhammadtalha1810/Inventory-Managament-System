@@ -51,10 +51,27 @@ a:hover{
 #home-btn:hover{
     background-color: transparent;
 }
+#logout-btn{
+    color: black;
+    text-transform: capitalize;
+    font-size: 16px;
+    text-decoration:none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 80px;
+}
 #logout-btn:hover{
     background-color: rgb(223, 84, 91);
     color: white;
 }
+#login-btn{
+    width: 80px;
+    text-align: center;
+}
+
 #login-btn:hover{
     background-color: rgb(66, 172, 93);
     color: white;

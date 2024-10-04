@@ -5,21 +5,24 @@
             <span>Add Entities</span>
         </button>
         <div id="content-container" [ngClass]="{'hidden': !isAddEntitiesOpened}">
-            <p>Add Stocks</p>
-            <p>Add Brands</p>
-            <p>Add Models</p>
-            <p>Add Variants</p>
-            <p>Add Manufacturers</p>
+            <button class="list-button">Add Stocks</button>
+            <button class="list-button">Add Brands</button>
+            <button class="list-button">Add Models</button>
+            <button class="list-button">Add Variants</button>
+            <button class="list-button">Add Manufacturers</button>
         </div>
     </div>
     <div id="collapsible-container">
-        <button id="header-button" (click)="this.isViewEntitiesOpened = !this.isViewEntitiesOpened;">View Entities</button>
+        <button id="header-button" (click)="this.isViewEntitiesOpened = !this.isViewEntitiesOpened;">
+            <span id="plus-minus-sign" [textContent]="isViewEntitiesOpened ? '-' : '+' "></span>
+            <span>View Entities</span>
+        </button>
         <div id="content-container" [ngClass]="{'hidden': !isViewEntitiesOpened}">
-            <p>View Stocks</p>
-            <p>View Brands</p>
-            <p>View Models</p>
-            <p>View Variants</p>
-            <p>View Manufacturers</p>
+            <button class="list-button">View Stocks</button>
+            <button class="list-button">View Brands</button>
+            <button class="list-button">View Models</button>
+            <button class="list-button">View Variants</button>
+            <button class="list-button">View Manufacturers</button>
         </div>
     </div>
 </div>
