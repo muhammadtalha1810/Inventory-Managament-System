@@ -14,4 +14,11 @@ export class AuthService {
     const body = { username: username, password: password };
     return this.http.post(`${this.apiUrl}/login`, body, { headers });
   }
+
+  isLoggedIn(): any {
+    return this.http.get<any>(`${this.apiUrl}/isLoggedIn`);
+  }
+  logout(): Observable<any> {
+    return this.http.post(`${this.apiUrl}/logout`, {});
+  }
 }

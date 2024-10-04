@@ -3,27 +3,32 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterLink, HttpClientModule],
+  imports: [FormsModule, RouterLink, HttpClientModule, NgIf],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+  isLoggedIn: boolean = false;
   username: string = '';
   password: string = '';
   errorMessage: string = '';
   constructor(private authService: AuthService, private router: Router) { }
   ngOnInit(): void {
-    
+    this.authService.isLoggedIn().subscribe((val:boolean) => {
+      this.isLoggedIn = val;
+    });
   }
   onSubmit(e:any) {
     e.preventDefault();
     this.authService.login(this.username, this.password).subscribe(
       (success) => {
         console.log(success);
+        this.isLoggedIn = true;
         this.router.navigate(['/']);
       },
       (error) => {
