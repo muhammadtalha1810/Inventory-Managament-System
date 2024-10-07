@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RouterLinkActive } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { AuthService } from '../auth.service';
+import { SharedDataService } from '../shared-data.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -12,20 +13,18 @@ import { AuthService } from '../auth.service';
 })
 export class NavbarComponent implements OnInit {
   isLoggedIn = false;
-  constructor(private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private sharedDataService: SharedDataService) { }
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
+    this.sharedDataService.currentLoginStatus.subscribe(status => this.isLoggedIn = status);
+    this.authService.getisLoggedIn().subscribe(
+      (res: any) => 
+        { 
+          this.isLoggedIn = (Boolean(res.isLoggedIn));
+        }
+      );
   }
   logout(){
     this.isLoggedIn = false;
-    this.authService.logout().subscribe(
-      (success) => {
-        console.log(success);
-        this.isLoggedIn = false;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.authService.logout();
   }
 }

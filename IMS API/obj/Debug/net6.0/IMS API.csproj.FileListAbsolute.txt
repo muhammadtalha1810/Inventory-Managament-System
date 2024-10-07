@@ -1,0 +1,43 @@
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.csproj.AssemblyReference.cache
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.AssemblyInfoInputs.cache
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.AssemblyInfo.cs
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.csproj.CoreCompileInputs.cache
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\appsettings.json
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\IMS API.exe
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\IMS API.deps.json
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\IMS API.runtimeconfig.json
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\IMS API.dll
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\IMS API.pdb
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\talha.naeem\source\repos\IMS API\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\staticwebassets\msbuild.IMS API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\staticwebassets\msbuild.build.IMS API.props
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.IMS API.props
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.IMS API.props
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\scopedcss\bundle\IMS API.styles.css
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.csproj.Up2Date
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.dll
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\refint\IMS API.dll
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.pdb
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\IMS API.genruntimeconfig.cache
+C:\Users\talha.naeem\source\repos\IMS API\obj\Debug\net6.0\ref\IMS API.dll
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.csproj.AssemblyReference.cache
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.AssemblyInfoInputs.cache
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.AssemblyInfo.cs
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.csproj.CoreCompileInputs.cache
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.sourcelink.json
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.dll
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\refint\IMS API.dll
+C:\Users\talha.naeem\Desktop\Inventory Managament System\IMS API\obj\Debug\net6.0\IMS API.pdb

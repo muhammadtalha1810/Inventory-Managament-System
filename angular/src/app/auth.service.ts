@@ -12,13 +12,17 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const body = { username: username, password: password };
-    return this.http.post(`${this.apiUrl}/login`, body, { headers });
+    return this.http.post(`${this.apiUrl}/login`, body, { withCredentials: true, headers });
   }
 
-  isLoggedIn(): any {
-    return this.http.get<any>(`${this.apiUrl}/isLoggedIn`);
+  getisLoggedIn():Observable<any>{
+    return this.http.get(`${this.apiUrl}/isLoggedIn`,{ withCredentials: true });
   }
-  logout(): Observable<any> {
-    return this.http.post(`${this.apiUrl}/logout`, {});
+
+  logout():Observable<any>{
+    return this.http.post(`${this.apiUrl}/logout`, { withCredentials: true });
   }
+  // logout() {
+  //   document.cookie = ".AspNetCore.Cookies=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+  // }
 }

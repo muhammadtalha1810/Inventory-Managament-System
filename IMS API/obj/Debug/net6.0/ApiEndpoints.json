@@ -1,0 +1,48 @@
+[
+  {
+    "ContainingType": "IMS_API.Controllers.UserController",
+    "Method": "GetDetails",
+    "RelativePath": "api/user/getdetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.AuthController",
+    "Method": "IsLoggedIn",
+    "RelativePath": "auth/isLoggedIn",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.AuthController",
+    "Method": "GetName",
+    "RelativePath": "auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginObjectDTO",
+        "Type": "IMS_API.Data_Transfer_Objects.LoginObjectDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.AuthController",
+    "Method": "SignOutAsync",
+    "RelativePath": "auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
