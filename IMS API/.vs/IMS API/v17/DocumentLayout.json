@@ -7,36 +7,40 @@
       "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:data access layer\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\employeeuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\employeeuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\myuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\myuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\indivisualuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\indivisualuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\businessuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\businessuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\data transfer objects\\brandmodeldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:data transfer objects\\brandmodeldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\data transfer objects\\loginobjectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:data transfer objects\\loginobjectdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\employeeuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\employeeuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\businessuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\businessuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\indivisualuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\indivisualuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\models\\myuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:models\\myuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{768386A0-AFF2-4B3E-8152-38A725FDC356}|IMS API.csproj|c:\\users\\talha.naeem\\desktop\\inventory managament system\\ims api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -50,8 +54,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BrandModelDTO.cs",
+              "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Data Transfer Objects\\BrandModelDTO.cs",
+              "RelativeDocumentMoniker": "Data Transfer Objects\\BrandModelDTO.cs",
+              "ToolTip": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Data Transfer Objects\\BrandModelDTO.cs",
+              "RelativeToolTip": "Data Transfer Objects\\BrandModelDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T11:35:26.124Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -60,14 +77,14 @@
               "RelativeDocumentMoniker": "Data Access Layer\\DBContext.cs",
               "ToolTip": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Data Access Layer\\DBContext.cs",
               "RelativeToolTip": "Data Access Layer\\DBContext.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwB0AAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAA5wDoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-07T12:24:41.139Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "MyUser.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Models\\MyUser.cs",
               "RelativeDocumentMoniker": "Models\\MyUser.cs",
@@ -79,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "EmployeeUser.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Models\\EmployeeUser.cs",
               "RelativeDocumentMoniker": "Models\\EmployeeUser.cs",
@@ -92,19 +109,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "BusinessUser.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Models\\BusinessUser.cs",
               "RelativeDocumentMoniker": "Models\\BusinessUser.cs",
               "ToolTip": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Models\\BusinessUser.cs",
               "RelativeToolTip": "Models\\BusinessUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T08:24:04.014Z"
+              "WhenOpened": "2024-10-07T08:24:04.014Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "IndivisualUser.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Models\\IndivisualUser.cs",
               "RelativeDocumentMoniker": "Models\\IndivisualUser.cs",
@@ -112,11 +130,12 @@
               "RelativeToolTip": "Models\\IndivisualUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T08:19:41.307Z"
+              "WhenOpened": "2024-10-07T08:19:41.307Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -128,19 +147,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Controllers\\UserController.cs",
               "ToolTip": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Controllers\\UserController.cs",
               "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvyUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T09:19:36.594Z"
+              "WhenOpened": "2024-10-04T09:19:36.594Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "LoginObjectDTO.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Data Transfer Objects\\LoginObjectDTO.cs",
               "RelativeDocumentMoniker": "Data Transfer Objects\\LoginObjectDTO.cs",
@@ -148,11 +168,12 @@
               "RelativeToolTip": "Data Transfer Objects\\LoginObjectDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T08:33:49.7Z"
+              "WhenOpened": "2024-10-04T08:33:49.7Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 3,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -160,11 +181,12 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAAAowGcAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T08:32:56.849Z"
+              "WhenOpened": "2024-10-04T08:32:56.849Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\talha.naeem\\Desktop\\Inventory Managament System\\IMS API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",

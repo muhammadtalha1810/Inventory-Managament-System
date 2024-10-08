@@ -1,4 +1,5 @@
-﻿using IMS_API.Models;
+﻿using IMS_API.Data_Access_Layer;
+using IMS_API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,14 @@ namespace IMS_API.Controllers
             }
 
             return NotFound(new { message = "User data not found" });
+        }
+
+        [HttpGet("getmodels")]
+        [Authorize]
+        public IActionResult GetModels()
+        {
+            DBContext dBContext = new DBContext();
+            return Ok(dBContext.GetModels());
         }
     }
 }

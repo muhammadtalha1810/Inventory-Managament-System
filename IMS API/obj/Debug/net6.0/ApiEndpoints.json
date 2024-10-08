@@ -10,6 +10,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "IMS_API.Controllers.UserController",
+    "Method": "GetModels",
+    "RelativePath": "api/user/getmodels",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "IMS_API.Controllers.AuthController",
     "Method": "IsLoggedIn",
     "RelativePath": "auth/isLoggedIn",

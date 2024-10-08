@@ -20,7 +20,7 @@ DELETE from users
 
 ALTER TABLE USERS
 DROP COLUMN DESCR
-SELECT * FROM USERS where USERNAME = 'talha'
+SELECT * FROM USERS where usertype = 'BUSINESS'
 
 
 

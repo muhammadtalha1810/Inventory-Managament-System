@@ -1,3 +1,24 @@
-<div id="dashboard-page">
+<div id="dashboard-page" *ngIf="usertype != 'indivisual'">
     <h1>Dashboard Page</h1>
+</div>
+<div id="dashboard-page-user" *ngIf="usertype == 'indivisual'">
+    <div id="filters-pane">
+        <h5>Filters</h5>
+        <div id="filters-block" *ngFor="let entity of filter_data | keyvalue">
+            <h6>{{entity.key}}</h6>
+            <div class="filter-checkbox-container" *ngFor="let item of filter_data[entity.key].names">
+                <input type="checkbox" [id]="item +'-checkbox'" [value]="item" class="filter-checkbox" (change)="toggle(entity.key,item, $event)" >
+                <label [for]="item +'-checkbox'" class="checkbox-label">{{item}}</label>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="products-pane">
+        <div id="products-block">
+            <div class="product-card" *ngFor="let product of products">
+                <img [src]="product.image" alt="product image">
+                <h6>{{product.name}}</h6>
+                <p>{{product.price}}</p>
+            </div>
+        </div>
+    </div> -->
 </div>
