@@ -28,13 +28,5 @@ namespace IMS_API.Controllers
 
             return NotFound(new { message = "User data not found" });
         }
-
-        [HttpGet("getmodels")]
-        [Authorize]
-        public IActionResult GetModels()
-        {
-            DBContext dBContext = new DBContext();
-            return Ok(dBContext.GetModels());
-        }
     }
 }

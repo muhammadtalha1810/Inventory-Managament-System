@@ -7,43 +7,11 @@ namespace IMS_API.Data_Access_Layer
 {
     public class DBContext
     {
-        private string connectionString = "Server=(localdb)\\local;Database=Inventory_Management;Trusted_Connection=False;TrustServerCertificate=True;";
+        private string connectionString = "Server=(localdb)\\local;Database=Inventory_Management;Trusted_Connection=False;TrustServerCertificate=True;";//Make it take from configuration settings
         public DBContext() { }
 
-        //public List<MyUser> GetBooks()
-        //{
-        //    var books = new List<MyUser>();
 
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("GetAllEmployees", conn)
-        //        {
-        //            CommandType = CommandType.StoredProcedure
-        //        };
-
-        //        conn.Open();
-        //        using (SqlDataReader reader = cmd.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                //var myuser = new EmployeeUser()
-        //                //{
-        //                //    UserId = (int)reader["Id"],
-        //                //    Title = reader["Title"].ToString(),
-        //                //    Author = reader["Author"].ToString(),
-        //                //    Price = (decimal)reader["Price"],
-        //                //    ImageUrl = reader["ImageUrl"].ToString()
-        //                //};
-
-        //                //books.Add(book);
-        //            }
-        //        }
-        //    }
-
-        //    return books;
-        //}
-
-        public List<BrandModelDTO> GetModels()
+        public Object GetModels(FiltersDTO filtersDTO)
         {
             var models = new List<BrandModelDTO>();
 
@@ -53,7 +21,21 @@ namespace IMS_API.Data_Access_Layer
                 {
                     CommandType = CommandType.StoredProcedure
                 };
-
+                cmd.Parameters.AddWithValue("@PageNumber", filtersDTO.PageNumber);
+                cmd.Parameters.AddWithValue("@PageSize", filtersDTO.PageSize);
+                cmd.Parameters.AddWithValue("@BrandsFilter", filtersDTO.BrandsFilter);
+                cmd.Parameters.AddWithValue("@PriceFilterMin", filtersDTO.PriceFilterMin);
+                cmd.Parameters.AddWithValue("@PriceFilterMax", filtersDTO.PriceFilterMax);
+                cmd.Parameters.AddWithValue("@RatingFilterMin", filtersDTO.RatingFilterMin);
+                cmd.Parameters.AddWithValue("@RatingFilterMax", filtersDTO.RatingFilterMax);
+                cmd.Parameters.AddWithValue("@RamFilterValue", filtersDTO.@RamFilterValue);
+                cmd.Parameters.AddWithValue("@StorageFilterValue", filtersDTO.@StorageFilterValue);
+                cmd.Parameters.AddWithValue("@BatteryFilterMin", filtersDTO.BatteryFilterMin);
+                cmd.Parameters.AddWithValue("@BatteryFilterMax", filtersDTO.BatteryFilterMax);
+                cmd.Parameters.AddWithValue("@SearchKeyword", filtersDTO.@SearchKeyword);
+                var totalPagesParam = new SqlParameter("@TotalPages", SqlDbType.Int);
+                totalPagesParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(totalPagesParam);
                 conn.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -65,14 +47,15 @@ namespace IMS_API.Data_Access_Layer
                             ModelName = reader["MODEL_NAME"].ToString(),
                             BrandName = reader["BRAND_NAME"].ToString(),
                             Price = (decimal)reader["PRICE"],
-                            ImageUrl = reader["IMAGEURL"].ToString()
+                            ImageUrl = reader["IMAGE_URL"].ToString()
                         };
-
+                        
                         models.Add(model);
                     }
+                    
                 }
+                return new { data = models, totalPages = totalPagesParam.Value };
             }
-
             return models;
         }
     }

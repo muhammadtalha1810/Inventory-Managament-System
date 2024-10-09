@@ -11,6 +11,71 @@
                 <label [for]="item +'-checkbox'" class="checkbox-label">{{item}}</label>
             </div>
         </div>
+        <div id="filters-block">
+            <h6>Ram</h6>
+            <div class="filter-container">
+                <input id="input" type="range" min="2" [(ngModel)]="ram_filter_value" max="16" step="2">
+                <p>{{ram_filter_value}} GB</p>
+            </div>
+        </div>
+        <div id="filters-block">
+            <h6>Storage</h6>
+            <div class="filter-container">
+                <input id="input" type="range" min="16" [(ngModel)]="storage_filter_value" max="128" step="16">
+                <p>{{storage_filter_value}} GB</p>
+            </div>
+        </div>
+        <div id="filters-block">
+            <h6>Rating</h6>
+            <div class="filter-container">
+                <label for="rating_filter_min_value" class="filter-label">Min</label>
+                <input type="number" min="1" max="5" step="0.5" class="filter-input" [(ngModel)]="rating_filter_min_value" (change)="updateRatingFilter($event)">
+                <label for="rating_filter_max_value" class="filter-label">Max</label>
+                <input type="number" min="1" max="5" step="0.5" class="filter-input" [(ngModel)]="rating_filter_max_value" (change)="updateRatingFilter($event)">
+            </div>
+        </div>
+        <div id="filters-block">
+            <h6>Price</h6>
+            <div class="filter-container">
+                <label for="price_filter_min_value" class="filter-label">Min</label>
+                <input type="number" min="50" max="1000" step="10" class="filter-input" [(ngModel)]="price_filter_min_value" (change)="updatePriceFilter($event)">
+                <label for="price_filter_max_value" class="filter-label">Max</label>
+                <input type="number" min="50" max="1000" step="10" class="filter-input" [(ngModel)]="price_filter_max_value" (change)="updatePriceFilter($event)">
+            </div>
+        </div>
+        <div id="filters-block">
+            <h6>Battery</h6>
+            <div class="filter-container">
+                <label for="battery_filter_min_value" class="filter-label">Min</label>
+                <input type="number" min="2500" max="5000" step="100" class="filter-input" [(ngModel)]="battery_filter_min_value" (change)="updateBatteryFilter($event)">
+                <label for="battery_filter_max_value" class="filter-label">Max</label>
+                <input type="number" min="2500" max="5000" step="100" class="filter-input" [(ngModel)]="battery_filter_max_value" (change)="updateBatteryFilter($event)">
+            </div>
+        </div>
+        <button id="filter-results-btn" (click)="fetchProducts()">Filter Results</button>
+    </div>
+    <div id="right-pane">
+        <input type="text" placeholder="Enter mobile name" id="search-input" [(ngModel)]="search_input_value" (change)="fetchProducts()">
+        <div id="mobiles-pane" *ngIf="products.length > 0">
+            <div class="mobile-card" *ngFor="let model of products">
+                <img src="./assets/sample.png" alt="product image">
+                <p class="brand-name">{{model.brandName}}</p>
+                <p class="model-name">{{model.modelName}}</p>
+                <p class="price">${{model.price}}</p>
+            </div>
+        </div>
+        <p *ngIf="products.length == 0" id="no-products-found">No Mobiles found with current search and filters</p>
+        <div id="pagination-pane">
+            <select id="page-size-select" [(ngModel)]="page_size" (change)="fetchProducts()">
+                <option value="24">24</option>
+                <option value="48">48</option>
+                <option value="72">72</option>
+            </select>
+            <p id="page-info">Page {{current_page}} of {{total_pages}}</p>
+            <button id="prev-page-btn" (click)="prevPage()" class="page-btn" [disabled]="current_page == 1">&lt;</button>
+            <button id="next-page-btn" (click)="nextPage()" class="page-btn" [disabled]="current_page == total_pages">&gt;</button>
+        </div>
+        
     </div>
     <!-- <div id="products-pane">
         <div id="products-block">

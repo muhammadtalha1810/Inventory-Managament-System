@@ -1,18 +1,24 @@
 [
   {
-    "ContainingType": "IMS_API.Controllers.UserController",
-    "Method": "GetDetails",
-    "RelativePath": "api/user/getdetails",
-    "HttpMethod": "GET",
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetModels",
+    "RelativePath": "api/MobileModel/getmodels",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "filtersDTO",
+        "Type": "IMS_API.Data_Transfer_Objects.FiltersDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "IMS_API.Controllers.UserController",
-    "Method": "GetModels",
-    "RelativePath": "api/user/getmodels",
+    "Method": "GetDetails",
+    "RelativePath": "api/user/getdetails",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

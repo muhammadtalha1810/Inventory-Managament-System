@@ -8,23 +8,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    
 }
 h1{
     font-size: 2rem;
     color: #333;
 }
 #dashboard-page-user{
+    margin-bottom: 30px;
     width: 95%;
-    height: 90%;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     display: flex;
-
 }
 #filters-pane{
     margin: 30px;
-    width: 15%;
+    width: 12%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -45,5 +43,107 @@ h6{
 .checkbox-label{
     margin-left: 5px;
 }
+.filter-label{
+    margin: 0 20px;
+}
+.filter-input{
+    width: 100px;
+    display: block;
+    margin: 5px 20px;
+    padding: 5px 10px;
+    outline: none;
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    border-radius: 10px;
+}
+.filter-input:hover{
+    box-shadow: 0 0 5px 0 rgba(117, 117, 117, 0.521);
+}
+#right-pane{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    margin: 30px 30px 30px 0px;
+}
+#search-input{
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    outline: none;
+}
+#search-input:focus{
+    box-shadow: 0 0 5px 0 rgba(117, 117, 117, 0.521);
+}
+#pagination-pane{
+    display: flex;
+    gap: 10px;
+    margin: 30px 10px 10px auto;
+}
+#page-size-select{
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    outline: none;
+}
+.page-btn{
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    outline: none;
+    font-size: 18px;
+}
+.page-btn:hover{
+    box-shadow: 0 0 5px 0 rgba(117, 117, 117, 0.521);
+}
+.page-btn:disabled{
+    background-color: rgba(117, 117, 117, 0.425);
+}
+#page-info{
+    margin: 10px 10px;
+}
+#no-products-found{
+    font-size: 20px;
+    margin: 200px auto;
+}
+#mobiles-pane{
+    margin-top: 30px;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+.mobile-card{
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    border-radius: 20px;
+    padding: 20px 10px 10px 10px;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+.mobile-card:hover{
+    box-shadow: 0 0 20px 0 rgba(117, 117, 117, 0.521);
+    cursor: pointer;
+}
+.mobile-card img{
 
-
+}
+.brand-name{
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+.model-name{
+    margin: 0;
+    padding: 0;
+}
+.price{
+    color: #31ad11;
+}
+#filter-results-btn{
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    border-radius: 10px;
+    padding: 5px 10px;
+    outline: none;
+    font-size: 18px;
+}
