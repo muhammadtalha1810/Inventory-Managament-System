@@ -17,8 +17,8 @@ namespace IMS_API.Controllers
         [HttpGet("getimage/{modelId}")]
         public IActionResult GetImage(int modelId)
         {
-            var imagefile = _imageService.GetImage(modelId);
-            return imagefile;
+            var images = _imageService.GetImage(modelId);
+            return Ok(images);
         }
 
 

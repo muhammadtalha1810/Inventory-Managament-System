@@ -23,19 +23,19 @@ namespace IMS_API.Data_Access_Layer
                 cmd.Parameters.AddWithValue("@ImageData", image.ImageBytes);
                 cmd.Parameters.AddWithValue("@ContentType", image.ContentType);
                 cmd.Parameters.AddWithValue("@ModelId", image.ModelId);
-                var resultParam = new SqlParameter("@Result", SqlDbType.VarChar);
-                resultParam.Direction = ParameterDirection.Output;
-                cmd.Parameters.Add(resultParam);
+                //var resultParam = new SqlParameter("@Result", SqlDbType.VarChar);
+                //resultParam.Direction = ParameterDirection.Output;
+                //cmd.Parameters.Add(resultParam);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                return resultParam.Value.ToString();
+                return "true";
             }
         }
 
-        public ImageData GetImageData(int modelId)
+        public List<ImageData> GetImageData(int modelId)
         {
-            var image = new ImageData();
+            var images = new List<ImageData>();
             using (SqlConnection conn = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = new SqlCommand("GetImageData", conn)
@@ -48,17 +48,18 @@ namespace IMS_API.Data_Access_Layer
                 {
                     while (reader.Read())
                     {
-                        image = new ImageData()
+                        var image = new ImageData()
                         {
-                            ImageBytes = (byte[])reader["IMAGEDATA"],
+                            ImageBytes = reader["IMAGEDATA"].ToString(),
                             ContentType = reader["CONTENTTYPE"].ToString(),
                             ModelId = (int) reader["MODELID"],
                         };
+                        images.Add(image);
                     }
 
                 }
                 conn.Close();
-                return image;
+                return images;
             }
         }
     }

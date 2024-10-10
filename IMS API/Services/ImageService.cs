@@ -16,13 +16,9 @@ namespace IMS_API.Services
             _dbContext = dbContext;
         }
 
-        public FileResult GetImage(int modelId)
+        public List<ImageData> GetImage(int modelId)
         {
-            var image = _dbContext.GetImageData(modelId);  // Fetch the image bytes from the database
-
-
-            // Return a FileResult that contains the image bytes and the content type
-            return new FileContentResult(image.ImageBytes, image.ContentType);  // Adjust the content type as needed
+            return _dbContext.GetImageData(modelId);
         }
 
         public async Task<string> UploadImage(IFormFile file, int modelId)
@@ -34,7 +30,7 @@ namespace IMS_API.Services
                 // Save imageBytes to the database
                 var image = new ImageData()
                 {
-                    ImageBytes = imageBytes,
+                    ImageBytes = Convert.ToBase64String(imageBytes),
                     ContentType = file.ContentType,
                     ModelId = modelId
                 };
