@@ -38,7 +38,7 @@ export class DashboardPageComponent implements OnInit {
   battery_filter_max_value = 5000;
   usertype = 'indivisual';
   search_input_value = '';
-  page_size = 24;
+  page_size = 25;
   current_page = 1;
   total_pages = 1;
   products: any[] = [];

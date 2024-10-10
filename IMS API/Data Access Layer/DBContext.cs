@@ -8,8 +8,11 @@ namespace IMS_API.Data_Access_Layer
     public class DBContext
     {
         private string connectionString = "Server=(localdb)\\local;Database=Inventory_Management;Trusted_Connection=False;TrustServerCertificate=True;";//Make it take from configuration settings
-        public DBContext() { }
+        //public DBContext(IConfiguration configuration) {
+        //    connectionString = configuration.GetConnectionString("DefaultConnection");
+        //}
 
+        public DBContext() { }
 
         public Object GetModels(FiltersDTO filtersDTO)
         {
@@ -54,9 +57,9 @@ namespace IMS_API.Data_Access_Layer
                     }
                     
                 }
+                conn.Close();
                 return new { data = models, totalPages = totalPagesParam.Value };
             }
-            return models;
         }
     }
 }

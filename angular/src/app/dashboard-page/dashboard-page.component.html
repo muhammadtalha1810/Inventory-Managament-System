@@ -67,9 +67,10 @@
         <p *ngIf="products.length == 0" id="no-products-found">No Mobiles found with current search and filters</p>
         <div id="pagination-pane">
             <select id="page-size-select" [(ngModel)]="page_size" (change)="fetchProducts()">
-                <option value="24">24</option>
-                <option value="48">48</option>
-                <option value="72">72</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="75">75</option>
+                <option value="100">100</option>
             </select>
             <p id="page-info">Page {{current_page}} of {{total_pages}}</p>
             <button id="prev-page-btn" (click)="prevPage()" class="page-btn" [disabled]="current_page == 1">&lt;</button>

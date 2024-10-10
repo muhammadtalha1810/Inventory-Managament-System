@@ -1,4 +1,5 @@
 using IMS_API.Data_Access_Layer;
+using IMS_API.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,6 +43,9 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
+builder.Services.AddSingleton<ImagesDBContext>();
+builder.Services.AddSingleton<ImageService>();
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

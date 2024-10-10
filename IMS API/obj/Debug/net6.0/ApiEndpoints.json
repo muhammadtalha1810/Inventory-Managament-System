@@ -1,5 +1,42 @@
 [
   {
+    "ContainingType": "IMS_API.Controllers.ImagesController",
+    "Method": "GetImage",
+    "RelativePath": "api/Images/getimage/{modelId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.ImagesController",
+    "Method": "UploadImage",
+    "RelativePath": "api/Images/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "modelId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
     "Method": "GetModels",
     "RelativePath": "api/MobileModel/getmodels",
