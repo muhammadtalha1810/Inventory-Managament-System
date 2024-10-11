@@ -14,6 +14,7 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
+import { ImagedetailsComponent } from './imagedetails/imagedetails.component';
 
 
 export const routes: Routes = [
@@ -32,4 +33,5 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'reset-password', component: ResetPageComponent},
+    {path: 'imagedata/:id', component: ImagedetailsComponent}
 ];

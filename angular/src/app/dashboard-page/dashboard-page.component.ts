@@ -3,6 +3,7 @@ import { NgIf, NgFor} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { KeyValuePipe } from '@angular/common';
 import { MobiledataService } from '../mobiledata.service';
+import { Router } from '@angular/router';
 
 interface EntityData {
   names: string[];
@@ -22,7 +23,7 @@ interface FilterData {
 })
 export class DashboardPageComponent implements OnInit {
   
-  constructor(private mobiledataService: MobiledataService) { }
+  constructor(private mobiledataService: MobiledataService, private router: Router) { }
   
   ngOnInit(): void {
     this.fetchProducts();
@@ -115,5 +116,9 @@ export class DashboardPageComponent implements OnInit {
       this.products = data.data;
       this.total_pages = data.totalPages;
     });
+  }
+  openModel(modelId:number):void
+  {
+    this.router.navigate([`/imagedata/${modelId}`]);
   }
 }

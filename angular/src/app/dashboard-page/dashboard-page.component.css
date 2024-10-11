@@ -119,7 +119,7 @@ h6{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0ad;
 }
 .mobile-card:hover{
     box-shadow: 0 0 20px 0 rgba(117, 117, 117, 0.521);

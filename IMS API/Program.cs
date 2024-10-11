@@ -44,6 +44,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<ImagesDBContext>();
+builder.Services.AddSingleton<DBContext>();
 builder.Services.AddSingleton<ImageService>();
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

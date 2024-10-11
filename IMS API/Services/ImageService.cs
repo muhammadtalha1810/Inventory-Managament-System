@@ -16,12 +16,12 @@ namespace IMS_API.Services
             _dbContext = dbContext;
         }
 
-        public List<ImageData> GetImage(int modelId)
-        {
-            return _dbContext.GetImageData(modelId);
-        }
+        //public List<ImageData> GetImage(int modelId)
+        //{
+        //    return _dbContext.GetImageData(modelId);
+        //}
 
-        public async Task<string> UploadImage(IFormFile file, int modelId)
+        public async Task<string> UploadImage(IFormFile file, string modelName)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -32,7 +32,7 @@ namespace IMS_API.Services
                 {
                     ImageBytes = Convert.ToBase64String(imageBytes),
                     ContentType = file.ContentType,
-                    ModelId = modelId
+                    ModelName = modelName
                 };
                 string result =  _dbContext.UploadImage(image);
                 return result;

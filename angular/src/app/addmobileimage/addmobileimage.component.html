@@ -1,0 +1,16 @@
+<div id="main-container" (submit)="addMobileImage($event)">
+    <h4>Add Mobile Image</h4>
+    <form [formGroup]="addMobileImageForm">
+        <label for="model-name">Model Name</label>
+        <input list="model-names" formControlName="modelName" id="model-name" (input)="onModelNameChange($event)">
+        <datalist id="model-names">
+            <option *ngFor="let model of modelsNames" [value]="model">
+        </datalist>
+        <label for="image-file">Image File</label>
+        <input type="file" formControlName="imageFile" id="image-file" accept="image/*">
+        <button type="submit">Add Mobile Image</button>
+    </form>
+    <p id="error-message"
+        [ngClass]="{'error': messageType === this.messageTypes.error, 'success': messageType === this.messageTypes.success}">
+        {{messageText}}</p>
+</div>

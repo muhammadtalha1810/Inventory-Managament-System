@@ -1,22 +1,6 @@
 [
   {
     "ContainingType": "IMS_API.Controllers.ImagesController",
-    "Method": "GetImage",
-    "RelativePath": "api/Images/getimage/{modelId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "modelId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "IMS_API.Controllers.ImagesController",
     "Method": "UploadImage",
     "RelativePath": "api/Images/upload",
     "HttpMethod": "POST",
@@ -29,8 +13,8 @@
         "IsRequired": false
       },
       {
-        "Name": "modelId",
-        "Type": "System.Int32",
+        "Name": "modelName",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -48,6 +32,27 @@
         "Name": "filtersDTO",
         "Type": "IMS_API.Data_Transfer_Objects.FiltersDTO",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetModelsNames",
+    "RelativePath": "api/MobileModel/getmodelsnames",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ResultsCount",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

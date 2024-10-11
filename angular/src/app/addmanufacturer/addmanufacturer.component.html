@@ -1,0 +1,21 @@
+<div id="main-container" (submit)="addManufacturer($event)">
+    <h4>Add Manufacturer</h4>
+    <form>
+        <label for="brand">Brand</label>
+        <select name="brand" id="brand">
+            <option value="brand1">Brand 1</option>
+            <option value="brand2">Brand 2</option>
+        </select>
+        <label for="manufacturer-name">Manufacturer Name</label>
+        <input type="text" name="manufacturer-name" id="manufacturer-name">
+        
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location">
+        
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description">
+        <label for="capacity">Capacity (per day)</label>
+        <input type="number" name="capacity" id="capacity">
+        <button type="submit">Add Manufacturer</button>
+    </form>
+</div>

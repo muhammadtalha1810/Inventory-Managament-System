@@ -4,6 +4,6 @@
     {
         public string ImageBytes { get; set; }
         public string ContentType { get; set; }
-        public int ModelId { get; set; }
+        public string ModelName { get; set; }
     }
 }

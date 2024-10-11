@@ -1,4 +1,10 @@
 select * from images
 
 
-exec GetImageData @ModelId = 1
+exec GetImageData @ModelId = 9
+
+
+ALTER TABLE IMAGES
+ALTER COLUMN IMAGEDATA NVARCHAR(MAX) NOT NULL
+
+DELETE FROM IMAGES

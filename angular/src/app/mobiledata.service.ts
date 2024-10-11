@@ -12,4 +12,8 @@ export class MobiledataService {
   getMobileData(body: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/getmodels`, body);
   }
+
+  getModelsNames(keyword: string, resultsCount:number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/getmodelsnames?Keyword=${keyword}&ResultsCount=${resultsCount}`);
+  }
 }

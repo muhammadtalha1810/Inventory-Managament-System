@@ -14,21 +14,21 @@ namespace IMS_API.Controllers
             _imageService = imageService;
         }
 
-        [HttpGet("getimage/{modelId}")]
-        public IActionResult GetImage(int modelId)
-        {
-            var images = _imageService.GetImage(modelId);
-            return Ok(images);
-        }
+        //[HttpGet("getimage/{modelId}")]
+        //public IActionResult GetImage(int modelId)
+        //{
+        //    var images = _imageService.GetImage(modelId);
+        //    return Ok(images);
+        //}
 
 
         [HttpPost("upload")]
-        public async Task<IActionResult> UploadImage(IFormFile file, int modelId)
+        public async Task<IActionResult> UploadImage(IFormFile file, string modelName)
         {
             if (file == null || file.Length == 0)
                 return BadRequest(new { message = "No file uploaded." });
 
-            string result  = _imageService.UploadImage(file, modelId).Result;
+            string result  = _imageService.UploadImage(file, modelName).Result;
             return Ok(new { message = result});
         }
     }

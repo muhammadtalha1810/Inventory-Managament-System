@@ -1,28 +1,53 @@
 <div id="main-container">
-    <div id="collapsible-container">
-        <button id="header-button"  (click)="this.isAddEntitiesOpened = !this.isAddEntitiesOpened;">
-            <span id="plus-minus-sign" [textContent]="isAddEntitiesOpened ? '-' : '+' "></span>
-            <span>Add Entities</span>
-        </button>
-        <div id="content-container" [ngClass]="{'hidden': !isAddEntitiesOpened}">
-            <button class="list-button">Add Stocks</button>
-            <button class="list-button">Add Brands</button>
-            <button class="list-button">Add Models</button>
-            <button class="list-button">Add Variants</button>
-            <button class="list-button">Add Manufacturers</button>
+    <div id="left-container">
+        <div id="collapsible-container">
+            <button id="header-button"  (click)="this.isAddEntitiesOpened = !this.isAddEntitiesOpened;">
+                <span id="plus-minus-sign" [textContent]="isAddEntitiesOpened ? '-' : '+' "></span>
+                <span>Add Entities</span>
+            </button>
+            <div id="content-container" [ngClass]="{'hidden': !isAddEntitiesOpened}">
+                <button class="list-button" (click)="this.current_page = 'addstock'">Add Stocks</button>
+                <button class="list-button" (click)="this.current_page = 'addbrand'">Add Brands</button>
+                <button class="list-button" (click)="this.current_page = 'addmodel'">Add Models</button>
+                <button class="list-button" (click)="this.current_page = 'addvariant'">Add Variants</button>
+                <button class="list-button" (click)="this.current_page = 'addmanufacturer'">Add Manufacturers</button>
+                <button class="list-button" (click)="this.current_page = 'addmobileimage'">Add Mobile Images</button>
+            </div>
         </div>
+        <!-- <div id="collapsible-container">
+            <button id="header-button" (click)="this.isViewEntitiesOpened = !this.isViewEntitiesOpened;">
+                <span id="plus-minus-sign" [textContent]="isViewEntitiesOpened ? '-' : '+' "></span>
+                <span>View Entities</span>
+            </button>
+            <div id="content-container" [ngClass]="{'hidden': !isViewEntitiesOpened}">
+                <button class="list-button" (click)="this.current_page = 'viewstock'">View Stocks</button>
+                <button class="list-button" (click)="this.current_page = 'viewbrand'">View Brands</button>
+                <button class="list-button" (click)="this.current_page = 'viewmodel'">View Models</button>
+                <button class="list-button" (click)="this.current_page = 'viewvariant'">View Variants</button>
+                <button class="list-button" (click)="this.current_page = 'viewmanufacturer'">View Manufacturers</button>
+            </div>
+        </div> -->
+        
     </div>
-    <div id="collapsible-container">
-        <button id="header-button" (click)="this.isViewEntitiesOpened = !this.isViewEntitiesOpened;">
-            <span id="plus-minus-sign" [textContent]="isViewEntitiesOpened ? '-' : '+' "></span>
-            <span>View Entities</span>
-        </button>
-        <div id="content-container" [ngClass]="{'hidden': !isViewEntitiesOpened}">
-            <button class="list-button">View Stocks</button>
-            <button class="list-button">View Brands</button>
-            <button class="list-button">View Models</button>
-            <button class="list-button">View Variants</button>
-            <button class="list-button">View Manufacturers</button>
+    <div [ngSwitch]="current_page" id="right-container">
+        <div *ngSwitchCase="'addstock'">
+            <app-addstock></app-addstock>
+        </div>
+        <div *ngSwitchCase="'addbrand'">
+            <app-addbrand></app-addbrand>
+        </div>
+        <div *ngSwitchCase="'addmodel'">
+            <app-addmodel></app-addmodel>
+        </div>
+        <div *ngSwitchCase="'addvariant'">
+            <app-addvariant></app-addvariant>
+        </div>
+        <div *ngSwitchCase="'addmanufacturer'">
+            <app-addmanufacturer></app-addmanufacturer>
+        </div>
+        <div *ngSwitchCase="'addmobileimage'">
+            <app-addmobileimage></app-addmobileimage>
         </div>
     </div>
 </div>
+

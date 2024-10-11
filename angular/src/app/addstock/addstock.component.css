@@ -1,0 +1,39 @@
+form {
+    margin: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+label {
+    font-size: 18px;
+    font-weight: 500;
+}
+select {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+input:focus {
+    box-shadow: 0 0 5px 0 rgba(151, 151, 151, 0.589);
+}
+button {
+    grid-column: span 2;
+    margin: 20px auto;
+    padding: 10px 40px;
+    border-radius: 10px;
+    border: none;
+    display: block;
+    background-color: #474747;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+

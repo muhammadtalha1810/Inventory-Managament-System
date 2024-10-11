@@ -1,0 +1,31 @@
+<div id="main-container" (submit)="addVariant($event)">
+    <h4>Add Variant</h4>
+    <form>
+        <label for="brand">Brand</label>
+        <select name="brand" id="brand">
+            <option value="brand1">Brand 1</option>
+            <option value="brand2">Brand 2</option>
+        </select>
+        <label for="model">Model</label>
+        <select name="model" id="model">
+            <option value="model1">Model 1</option>
+            <option value="model2">Model 2</option>
+        </select>
+        <label for="variant-name">Variant Name</label>
+        <input type="text" name="variant-name" id="variant-name">
+        <hr>
+        <h4 id="specs-heading">Specifications</h4>
+        <label for="ram">RAM (GB)</label>
+        <input type="number" name="ram" id="ram">
+        <label for="storage">Storage (GB)</label>
+        <input type="number" name="storage" id="storage">
+        <label for="color">Color</label>
+        <input type="text" name="color" id="color">
+        <label for="retail-price">Retail Price ($)</label>
+        <input type="number" name="retailprice" id="retailprice">
+        <label for="wholesale-price">Wholesale Price ($)</label>
+        <input type="number" name="wholesale-price" id="wholesale-price">
+        <button type="submit">Add Variant</button>
+    </form>
+</div>
+

@@ -57,8 +57,8 @@
     <div id="right-pane">
         <input type="text" placeholder="Enter mobile name" id="search-input" [(ngModel)]="search_input_value" (change)="fetchProducts()">
         <div id="mobiles-pane" *ngIf="products.length > 0">
-            <div class="mobile-card" *ngFor="let model of products">
-                <img src="./assets/sample.png" alt="product image">
+            <div class="mobile-card" *ngFor="let model of products" (click)="openModel(model.modelId)">
+                <img [src]="'data:'+ model.images[0].contentType + ';base64,' + model.images[0].imageBytes" alt="product image">
                 <p class="brand-name">{{model.brandName}}</p>
                 <p class="model-name">{{model.modelName}}</p>
                 <p class="price">${{model.price}}</p>
