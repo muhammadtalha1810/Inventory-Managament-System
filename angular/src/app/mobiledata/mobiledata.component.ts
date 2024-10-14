@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-imagedetails',
+  selector: 'app-mobiledata',
   standalone: true,
-  imports: [],
-  templateUrl: './imagedetails.component.html',
-  styleUrl: './imagedetails.component.css'
+  imports: [NgClass],
+  templateUrl: './mobiledata.component.html',
+  styleUrl: './mobiledata.component.css'
 })
-export class ImagedetailsComponent implements OnInit {
+export class MobiledataComponent {
+  mode:string = 'view'
   modelId: string | null = null;
 
   constructor(private route: ActivatedRoute){}

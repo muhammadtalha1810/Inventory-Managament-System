@@ -120,5 +120,102 @@ namespace IMS_API.Data_Access_Layer
         }
 
 
+        public string RegisterUser(RegisterUserDTO registerUserDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("RegisterUser", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@UserName", registerUserDTO.userName);
+                cmd.Parameters.AddWithValue("@Password", registerUserDTO.password);
+                cmd.Parameters.AddWithValue("@Email", registerUserDTO.email);
+                cmd.Parameters.AddWithValue("@UserType", registerUserDTO.userType);
+                cmd.Parameters.AddWithValue("@FirstName", registerUserDTO.firstName);
+                cmd.Parameters.AddWithValue("@LastName", registerUserDTO.lastName);
+                cmd.Parameters.AddWithValue("@PhoneNumber", registerUserDTO.phoneNumber);
+                cmd.Parameters.AddWithValue("@Address", registerUserDTO.streetAddress + ", "+ registerUserDTO.city + ", " + registerUserDTO.state + ", " + registerUserDTO.country);
+
+                var result = new SqlParameter("@Result", SqlDbType.VarChar, 200);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+                conn.Open();
+                cmd.ExecuteReader();
+                conn.Close();
+                return result.Value.ToString();
+            }
+        }
+
+        public MyUser AuthenticateUser(LoginObjectDTO loginDTO)
+        {
+            MyUser user = null;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetUser", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@UserName",loginDTO.Username);
+                cmd.Parameters.AddWithValue("@Password", loginDTO.Password);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        user = new MyUser()
+                        {
+                            UserId = (int)reader["USERID"],
+                            UserName = reader["USERNAME"].ToString(),
+                            Email = reader["EMAIL"].ToString(),
+                            FirstName = reader["FIRSTNAME"].ToString(),
+                            LastName = reader["LASTNAME"].ToString(),
+                            Description = reader["DESCRIPTION"].ToString(),
+                            PhoneNumber = reader["PHONENUMBER"].ToString(),
+                            Address = reader["ADDRESS"].ToString()
+                        };
+                    }
+
+                }
+                conn.Close();
+            }
+            return user;
+        }
+
+        public MyUser GetUser(int userId)
+        {
+            MyUser user = null;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetUser", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@UserID", userId);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        user = new MyUser()
+                        {
+                            UserId = (int)reader["USERID"],
+                            UserName = reader["USERNAME"].ToString(),
+                            Email = reader["EMAIL"].ToString(),
+                            FirstName = reader["FIRSTNAME"].ToString(),
+                            LastName = reader["LASTNAME"].ToString(),
+                            UserType = reader["USERTYPE"].ToString(),
+                            Description = reader["DESCRIPTION"].ToString(),
+                            PhoneNumber = reader["PHONENUMBER"].ToString(),
+                            Address = reader["ADDRESS"].ToString()
+                        };
+                    }
+
+                }
+                conn.Close();
+            }
+            return user;
+        }
+
     }
 }

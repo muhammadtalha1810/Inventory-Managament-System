@@ -119,6 +119,6 @@ export class DashboardPageComponent implements OnInit {
   }
   openModel(modelId:number):void
   {
-    this.router.navigate([`/imagedata/${modelId}`]);
+    this.router.navigate([`/mobiledata/${modelId}`]);
   }
 }

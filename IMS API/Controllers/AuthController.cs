@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using IMS_API.Data_Transfer_Objects;
 using IMS_API.Models;
+using IMS_API.Data_Access_Layer;
 
 namespace IMS_API.Controllers
 {
@@ -13,12 +14,19 @@ namespace IMS_API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly DBContext _dbContext;
+
+        public AuthController(DBContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         [HttpPost("login")]
         public async Task<ActionResult> GetName(LoginObjectDTO loginObjectDTO)
         {
             if (ModelState.IsValid)
             {
-                var user = await AuthenticateUser(loginObjectDTO.Username, loginObjectDTO.Password);
+                var user = _dbContext.AuthenticateUser(loginObjectDTO);
 
                 if (user == null)
                 {
@@ -27,8 +35,8 @@ namespace IMS_API.Controllers
 
                 var claims = new List<Claim>
                 {
-                    new Claim("UserName", user.Username),
-                    new Claim("UserId", "1")
+                    new Claim("UserName", user.UserName),
+                    new Claim("UserId", user.UserId.ToString())
 
                 };
 

@@ -14,4 +14,8 @@ export class UserdataService {
     const header = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(`${this.apiUrl}/getdetails`, { withCredentials: true , headers: header});
   }
+
+  register(userdata:object):Observable<any>{
+    return this.http.post(`${this.apiUrl}/register`, userdata)
+  }
 }

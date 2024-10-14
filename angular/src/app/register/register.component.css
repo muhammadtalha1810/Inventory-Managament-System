@@ -78,3 +78,13 @@ a{
 a:hover{
     text-decoration: underline;
 }
+.disabled{
+    background-color: rgb(156, 156, 156);
+}
+.invalid{
+    border: 1px solid red;
+}
+#error-message{
+    color: red;
+    text-align: center;
+}
