@@ -27,4 +27,9 @@ export class MobiledataService {
     }
     
   }
+
+  getBrandList() : Observable<any>
+  {
+    return this.http.get(`${this.apiUrl}/brandnames`);
+  }
 }
