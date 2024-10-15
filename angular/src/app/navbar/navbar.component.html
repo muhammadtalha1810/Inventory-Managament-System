@@ -11,9 +11,8 @@
         <a routerLink="/users" routerLinkActive="activebutton">Users</a>
     </div>
     <div id="right-container">
-        <a routerLink="/chats" routerLinkActive="activebutton">Chats</a>
         <a routerLink="/requests" routerLinkActive="activebutton">Requests</a>
-        <a routerLink="/profile" routerLinkActive="activebutton">User</a>
+        <a routerLink="/profile" routerLinkActive="activebutton">Profile</a>
         <a routerLink="/login" *ngIf="!isLoggedIn" id="login-btn">Login</a>
         <button id="logout-btn" (click)="logout()" *ngIf="isLoggedIn">Logout</button>
     </div>

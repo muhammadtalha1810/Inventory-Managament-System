@@ -58,6 +58,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetModelData",
+    "RelativePath": "api/MobileModel/mobiledata/{modelId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "modelId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "IMS_API.Controllers.UserController",
     "Method": "GetDetails",
     "RelativePath": "api/user/getdetails",

@@ -29,5 +29,22 @@ namespace IMS_API.Controllers
         {
             return Ok(_dbContext.GetModelsNames(Keyword, ResultsCount));
         }
+
+        [HttpGet("mobiledata/{modelId}")]
+        public IActionResult GetModelData(int modelId)
+        {
+            var modelData = _dbContext.GetModel(modelId);
+            var images = _dbContext.GetImageData(modelId);
+            var specifications = _dbContext.GetSpecifications(modelId);
+            var variantsData = _dbContext.GetVariantsData(modelId);
+            if(modelData != null)
+            {
+                return Ok(new { ModelData = modelData, ImageData = images, Specifications = specifications, Variants = variantsData });
+            }
+            else
+            {
+                return BadRequest(new { message = "No model data found" });
+            }
+        }
     }
 }

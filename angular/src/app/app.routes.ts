@@ -8,7 +8,6 @@ import { WarehousesPageComponent } from './warehouses-page/warehouses-page.compo
 import { PaymentsPageComponent } from './payments-page/payments-page.component';
 import { InvoicesPageComponent } from './invoices-page/invoices-page.component';
 import { UsersPageComponent } from './users-page/users-page.component';
-import { ChatsPageComponent } from './chats-page/chats-page.component';
 import { RequestsPageComponent } from './requests-page/requests-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { LoginComponent } from './login/login.component';
@@ -27,7 +26,6 @@ export const routes: Routes = [
     {path: 'payments', component: PaymentsPageComponent},
     {path: 'invoices', component: InvoicesPageComponent},
     {path: 'users', component: UsersPageComponent},
-    {path: 'chats', component: ChatsPageComponent},
     {path: 'requests', component: RequestsPageComponent},
     {path: 'profile', component: ProfilePageComponent},       
     {path: 'login', component: LoginComponent},

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,18 @@ export class MobiledataService {
     return this.http.post(`${this.apiUrl}/getmodels`, body);
   }
 
-  getModelsNames(keyword: string, resultsCount:number): Observable<any> {
+  getModelsNames(keyword: string, resultsCount: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/getmodelsnames?Keyword=${keyword}&ResultsCount=${resultsCount}`);
+  }
+
+  getMobileDatabyId(modelId: number|null): Observable<any> {
+    if(modelId === null)
+    {
+      return of(null);
+    }
+    else {
+      return this.http.get(`${this.apiUrl}/mobiledata/${modelId}`);
+    }
+    
   }
 }

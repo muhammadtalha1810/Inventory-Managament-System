@@ -1,1 +1,64 @@
-<p>ModelId : {{modelId}}</p>
+<div id="main-container">
+    <img [src]="'data:'+ modeldata.imageData[0].contentType + ';base64,' + modeldata.imageData[0].imageBytes" alt="Mobile Image File">
+    <div id="right-container">
+        <div id="edit-container">
+            <button [ngClass]="iseditmode ? 'inactivebutton' : 'activebutton'" (click)="iseditmode = false">View Mode</button>
+            <button [ngClass]="iseditmode ? 'activebutton' : 'inactivebutton'" (click)="iseditmode = true">Edit Mode</button>
+            <button id="update-btn" (click)="updatedata()">Update Data</button>
+        </div>
+        <h3>Model Data</h3>
+        <form id="model-data-form" [formGroup]="modeldataform">
+            <label for="modelId-input">Model Id</label>
+            <input type="number" class="input-view" readonly formControlName = "modelId" id="modelId-input">
+            <label for="modelName-input">Model Name</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "modelName" id="modelName-input">
+            <label for="releasaeDate-input">Release Date</label>
+            <input type="date" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "releasaeDate" id="releasaeDate-input">
+            <label for="rating-input">Overall Ratings</label>
+            <input type="number" class="input-view" readonly formControlName = "rating" id="rating-input">
+            <label for="brandName-input">Brand Name</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "brandName" id="brandName-input">
+        </form>
+        <h3>Specifications</h3>
+        <form id="model-data-form" [formGroup]="specificationsform">
+            <label for="screensize-input">Screensize (inches)</label>
+            <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "screensize" id="screensize-input">
+            <label for="batterySize-input">Battery Size (mAh)</label>
+            <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "batterySize" id="batterySize-input">
+            <label for="simSlots-input">Sim Slots</label>
+            <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "simSlots" id="simSlots-input">
+            <label for="chargingSpeed-input">Charging Speed (Watt)</label>
+            <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "chargingSpeed" id="chargingSpeed-input">
+            <label for="weight-input">Weight (grams)</label>
+            <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "weight" id="weight-input">
+            <label for="processor-input">Processor</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "processor" id="processor-input">
+            <label for="camera-input">Camera (mega pixels MP)</label>
+            <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "camera" id="camera-input">
+            <label for="operatingSystem-input">Operating System</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "operatingSystem" id="operatingSystem-input">
+            <label for="horizontalPixels-input">Resolution (Pixels)</label>
+            <div>
+                <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "horizontalPixels" id="horizontalPixels-input">
+                <span> x </span>
+                <input type="number" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "verticalPixels" id="verticalPixels-input">
+            </div>
+        </form>
+        <h3>Variants</h3>
+        <div id="variants-form">
+            <label>Available Ram (GBs)</label>
+            <div id="cards-container">
+                <span *ngFor="let ram of modeldata.variants.ramData" class="card">{{ram}}GB</span>
+            </div>
+            <label>Available Storage (GBs)</label>
+            <div id="cards-container">
+                <span *ngFor="let storage of modeldata.variants.storageData" class="card">{{storage}}GB</span>
+            </div>
+            <label>Available Colors</label>
+            <div id="cards-container">
+                <span *ngFor="let color of modeldata.variants.colorsData" class="card">{{color}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<app-dialog (dialogresult)="handleDialogResult($event)"></app-dialog>
