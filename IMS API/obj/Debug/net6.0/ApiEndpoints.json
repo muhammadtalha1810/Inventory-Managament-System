@@ -22,6 +22,80 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "AddManufacturer",
+    "RelativePath": "api/MobileModel/addmanufacturer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "manufacturerDTO",
+        "Type": "IMS_API.Data_Transfer_Objects.ManufacturerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "AddVariants",
+    "RelativePath": "api/MobileModel/addvariant",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "variantDTO",
+        "Type": "IMS_API.Data_Transfer_Objects.VariantDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetBrandNames",
+    "RelativePath": "api/MobileModel/getbrandnames",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ResultsCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetManufacturersNames",
+    "RelativePath": "api/MobileModel/getmanufacturersnames",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ResultsCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
     "Method": "GetModels",
     "RelativePath": "api/MobileModel/getmodels",
     "HttpMethod": "POST",
@@ -81,6 +155,27 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.UserController",
+    "Method": "GetUsersList",
+    "RelativePath": "api/user/getuserslist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

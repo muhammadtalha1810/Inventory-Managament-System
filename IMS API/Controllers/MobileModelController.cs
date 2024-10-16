@@ -46,5 +46,51 @@ namespace IMS_API.Controllers
                 return BadRequest(new { message = "No model data found" });
             }
         }
+
+        [HttpGet("getmanufacturersnames")]
+        public IActionResult GetManufacturersNames(string Keyword, int ResultsCount)
+        {
+            return Ok(_dbContext.GetManufacturersNames(Keyword, ResultsCount));
+        }
+
+        [HttpGet("getbrandnames")]
+        public IActionResult GetBrandNames(string Keyword, int ResultsCount)
+        {
+            return Ok(_dbContext.GetBrandNames(Keyword, ResultsCount));
+        }
+
+        [HttpPost("addmanufacturer")]
+        [Authorize]
+        public IActionResult AddManufacturer(ManufacturerDTO manufacturerDTO)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value); // or any other claim type
+            //var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+
+            var user = _dbContext.GetUser(userid);
+
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.AddManufacturer(manufacturerDTO);
+                return Ok(new {message = result});
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
+        [HttpPost("addvariant")]
+        [Authorize]
+        public IActionResult AddVariants(VariantDTO variantDTO)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value); // or any other claim type
+            //var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+
+            var user = _dbContext.GetUser(userid);
+
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.AddVariant(variantDTO);
+                return Ok(new { message = result });
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
     }
 }

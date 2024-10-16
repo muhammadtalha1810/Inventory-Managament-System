@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Reflection;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace IMS_API.Data_Access_Layer
@@ -50,15 +51,22 @@ namespace IMS_API.Data_Access_Layer
                 {
                     while (reader.Read())
                     {
-                        var model = new BrandModelDTO()
+                        try
                         {
-                            ModelId = (int)reader["MODELID"],
-                            ModelName = reader["MODEL_NAME"].ToString(),
-                            BrandName = reader["BRAND_NAME"].ToString(),
-                            Price = (decimal)reader["PRICE"],
-                            Images = GetImageData((int)reader["MODELID"])
-                        };
-                        models.Add(model);
+                            var model = new BrandModelDTO()
+                            {
+                                ModelId = (int)reader["MODELID"],
+                                ModelName = reader["MODEL_NAME"].ToString(),
+                                BrandName = reader["BRAND_NAME"].ToString(),
+                                Price = (decimal)reader["PRICE"],
+                                Images = GetImageData((int)reader["MODELID"])
+                            };
+                            models.Add(model);
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+                            return models;
+                        }
                     }
                     
                 }
@@ -232,6 +240,110 @@ namespace IMS_API.Data_Access_Layer
             }
         }
 
+        public List<String> GetManufacturersNames(string keyword, int resultsCount)
+        {
+            List<String> names = new List<String>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetManufacturersList", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@SearchKeyword", keyword);
+                cmd.Parameters.AddWithValue("@ResultsCount", resultsCount);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        names.Add(reader["MNAME"].ToString());
+                    }
+                }
+                conn.Close();
+                return names;
+            }
+        }
+
+
+        public List<String> GetBrandNames(string keyword, int resultsCount)
+        {
+            List<String> names = new List<String>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetBrandsNames", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@SearchKeyword", keyword == "null" ? null : keyword);
+                cmd.Parameters.AddWithValue("@ResultsCount", resultsCount);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        names.Add(reader["DISPLAY_NAME"].ToString());
+                    }
+                }
+                conn.Close();
+                return names;
+            }
+        }
+
+        public string AddManufacturer(ManufacturerDTO manufacturerDTO)
+        {
+            var models = new List<ManufacturerDTO>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddManufacturer", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@BrandName", manufacturerDTO.brandName);
+                cmd.Parameters.AddWithValue("@ManufacturerName", manufacturerDTO.manufacturerName);
+                cmd.Parameters.AddWithValue("@Location", manufacturerDTO.location);
+                cmd.Parameters.AddWithValue("@Description", manufacturerDTO.description);
+                cmd.Parameters.AddWithValue("@Capacity", manufacturerDTO.capacity);
+
+                var resultparameter = new SqlParameter("@Result", SqlDbType.VarChar, 200);
+                resultparameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(resultparameter);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return resultparameter.Value.ToString();
+            }
+        }
+
+        public string AddVariant(VariantDTO variantDTO)
+        {
+            var models = new List<ManufacturerDTO>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddVariant", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@BrandName", variantDTO.brandName);
+                cmd.Parameters.AddWithValue("@ModelName", variantDTO.modelName.Split(' ', 2)[1]);
+                cmd.Parameters.AddWithValue("@VariantName", variantDTO.variantName);
+                cmd.Parameters.AddWithValue("@Ram", variantDTO.ram);
+                cmd.Parameters.AddWithValue("@Storage", variantDTO.storage);
+                cmd.Parameters.AddWithValue("@Color", variantDTO.color);
+                cmd.Parameters.AddWithValue("@RetailPrice", variantDTO.retailPrice);
+                cmd.Parameters.AddWithValue("@WholesalePrice", variantDTO.wholesalePrice);
+
+                var resultparameter = new SqlParameter("@Result", SqlDbType.VarChar, 200);
+                resultparameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(resultparameter);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return resultparameter.Value.ToString();
+            }
+        }
+
 
         public string RegisterUser(RegisterUserDTO registerUserDTO)
         {
@@ -283,7 +395,8 @@ namespace IMS_API.Data_Access_Layer
                             Email = reader["EMAIL"].ToString(),
                             FirstName = reader["FIRSTNAME"].ToString(),
                             LastName = reader["LASTNAME"].ToString(),
-                            Description = reader["DESCRIPTION"].ToString(),
+                            UserType = reader["USERTYPE"].ToString(),
+                            Description = string.Empty,
                             PhoneNumber = reader["PHONENUMBER"].ToString(),
                             Address = reader["ADDRESS"].ToString()
                         };
@@ -318,7 +431,7 @@ namespace IMS_API.Data_Access_Layer
                             FirstName = reader["FIRSTNAME"].ToString(),
                             LastName = reader["LASTNAME"].ToString(),
                             UserType = reader["USERTYPE"].ToString(),
-                            Description = reader["DESCRIPTION"].ToString(),
+                            Description = string.Empty,
                             PhoneNumber = reader["PHONENUMBER"].ToString(),
                             Address = reader["ADDRESS"].ToString()
                         };
@@ -328,6 +441,47 @@ namespace IMS_API.Data_Access_Layer
                 conn.Close();
             }
             return user;
+        }
+
+        public object GetUsersList(int PageNumber, int PageSize)
+        {
+            List<Object> users = new List<Object>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetBasicUserDataList", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@PageNumber", PageNumber);
+                cmd.Parameters.AddWithValue("@PageSize", PageSize);
+
+                var totalPagesParam = new SqlParameter("@TotalPages", SqlDbType.Int);
+                totalPagesParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(totalPagesParam);
+
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        try
+                        {
+                            var user = new
+                            {
+                                UserId = (int)reader["USERID"],
+                                UserName = reader["USERNAME"].ToString(),
+                                Email = reader["EMAIL"].ToString(),
+                                FullName = reader["FULLNAME"].ToString(),
+                            };
+                            users.Add(user);
+                        }
+                        catch { }
+                    }
+
+                }
+                conn.Close();
+                return new { data = users, totalPages = totalPagesParam.Value};
+            }
         }
 
     }

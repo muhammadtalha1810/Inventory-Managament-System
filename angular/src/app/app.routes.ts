@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
 import { MobiledataComponent } from './mobiledata/mobiledata.component';
+import { UserdataComponent } from './userdata/userdata.component';
 
 
 export const routes: Routes = [
@@ -31,5 +32,6 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'reset-password', component: ResetPageComponent},
-    {path: 'mobiledata/:id', component: MobiledataComponent}
+    {path: 'mobiledata/:id', component: MobiledataComponent},
+    {path: 'userdata/:id', component: UserdataComponent}
 ];

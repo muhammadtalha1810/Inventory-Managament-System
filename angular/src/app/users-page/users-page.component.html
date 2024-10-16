@@ -1,1 +1,28 @@
-<p>users-page works!</p>
+<div id="main-container">
+    <div id="top-bar">
+        <h3 id="top-heading">Users</h3>
+        <button id="adduser-btn">Add User</button>
+    </div>
+    <div id="cards-container">
+        <div id="user-card" *ngFor="let user of users">
+            <h5>{{user.fullName}}</h5>
+            <span>{{user.email}}</span>
+            <div id="right-container">
+                <button id="view-btn" (click)="openuser(user.userId)">View User</button>
+                <button id="delete-btn">Delete User</button>
+            </div>
+        </div>
+    </div>
+    <p *ngIf="users.length == 0" id="no-users-found">No users found</p>
+    <div id="pagination-pane">
+        <select id="page-size-select" [(ngModel)]="page_size" (change)="fetchUsers()">
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+        </select>
+        <p id="page-info">Page {{current_page}} of {{total_pages}}</p>
+        <button id="prev-page-btn" (click)="prevPage()" class="page-btn" [disabled]="current_page == 1">&lt;</button>
+        <button id="next-page-btn" (click)="nextPage()" class="page-btn" [disabled]="current_page == total_pages">&gt;</button>
+    </div>
+</div>

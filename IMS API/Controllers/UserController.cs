@@ -66,5 +66,19 @@ namespace IMS_API.Controllers
             }
             return BadRequest(new { message = "Some Error Occured" });
         }
+
+        [HttpGet("getuserslist")]
+        [Authorize]
+        public IActionResult GetUsersList(int PageNumber, int PageSize)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.GetUsersList(PageNumber, PageSize);
+                return Ok(result);
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
     }
 }

@@ -1,0 +1,87 @@
+#main-container{
+    margin: 10px 50px 30px 50px;
+}
+#top-heading{
+    width: inherit;
+}
+#top-bar{
+    display: flex;
+}
+#adduser-btn{
+    margin: 0px 00px 0px auto;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(66, 172, 93);
+    padding: 5px 10px;
+    color: #fff;
+}
+#pagination-pane{
+    display: flex;
+    gap: 10px;
+    margin: 30px 10px 10px auto;
+}
+#page-size-select{
+    padding: 5px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    outline: none;
+}
+.page-btn{
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(117, 117, 117, 0.425);
+    outline: none;
+    font-size: 18px;
+}
+.page-btn:hover{
+    box-shadow: 0 0 5px 0 rgba(117, 117, 117, 0.521);
+}
+.page-btn:disabled{
+    background-color: rgba(117, 117, 117, 0.425);
+}
+#page-info{
+    margin: 10px 10px;
+}
+#no-products-found{
+    font-size: 20px;
+    margin: 200px auto;
+}
+#cards-container{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#user-card{
+    display: grid;
+    padding: 25px 30px;
+    border-radius: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: bisque;
+    transition: 0.3s;
+}
+#right-container{
+    width: fit-content;
+    margin: 0 0 0 auto;
+    display: flex;
+    gap: 30px;
+}
+#delete-btn{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(223, 54, 77);
+    padding: 5px 10px;
+    color: #fff;
+    transition: 0.3s;
+}
+#view-btn{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(66, 172, 93);
+    padding: 5px 10px;
+    color: #fff;
+    transition: 0.3s;
+}
+#delete-btn:hover, #view-btn:hover{
+    box-shadow: 0px 0px 10px #797575c4;
+}

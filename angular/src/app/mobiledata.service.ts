@@ -13,7 +13,7 @@ export class MobiledataService {
     return this.http.post(`${this.apiUrl}/getmodels`, body);
   }
 
-  getModelsNames(keyword: string, resultsCount: number): Observable<any> {
+  getModelsNames(keyword: string|null, resultsCount: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/getmodelsnames?Keyword=${keyword}&ResultsCount=${resultsCount}`);
   }
 
@@ -28,8 +28,22 @@ export class MobiledataService {
     
   }
 
-  getBrandList() : Observable<any>
+  getBrandList(keyword:string|null, resultcount:number) : Observable<any>
+  {
+    return this.http.get(`${this.apiUrl}/getbrandnames?Keyword=${keyword}&ResultsCount=${resultcount}`);
+  }
+
+  getManufacturerList() : Observable<any>
   {
     return this.http.get(`${this.apiUrl}/brandnames`);
+  }
+
+  addManufacturer(body:any):Observable<any>
+  {
+    return this.http.post(`${this.apiUrl}/addmanufacturer`, body, { withCredentials: true });
+  }
+  addVariant(body:any):Observable<any>
+  {
+    return this.http.post(`${this.apiUrl}/addvariant`, body, { withCredentials: true });
   }
 }

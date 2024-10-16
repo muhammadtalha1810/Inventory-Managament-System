@@ -1,31 +1,32 @@
-<div id="main-container" (submit)="addVariant($event)">
+<div id="main-container">
     <h4>Add Variant</h4>
-    <form>
+    <form [formGroup]="addvariantform"  (ngSubmit)="addVariant()">
         <label for="brand">Brand</label>
-        <select name="brand" id="brand">
-            <option value="brand1">Brand 1</option>
-            <option value="brand2">Brand 2</option>
-        </select>
-        <label for="model">Model</label>
-        <select name="model" id="model">
-            <option value="model1">Model 1</option>
-            <option value="model2">Model 2</option>
-        </select>
+        <input type="text" id="brand-input" list="brand-list" formControlName="brandName" (input)="brandinput()">
+        <datalist id="brand-list">
+            <option *ngFor="let brand of brandnameslist">{{brand}}</option>
+        </datalist>
+        <label for="model-name">Model Name</label>
+        <input list="model-names" formControlName="modelName" id="model-name" (input)="onModelNameChange()">
+        <datalist id="model-names">
+            <option *ngFor="let model of modelsNames" [value]="model">
+        </datalist>
         <label for="variant-name">Variant Name</label>
-        <input type="text" name="variant-name" id="variant-name">
+        <input type="text" name="variant-name" id="variant-name" formControlName="variantName">
         <hr>
         <h4 id="specs-heading">Specifications</h4>
         <label for="ram">RAM (GB)</label>
-        <input type="number" name="ram" id="ram">
+        <input type="number" name="ram" id="ram" formControlName="ram">
         <label for="storage">Storage (GB)</label>
-        <input type="number" name="storage" id="storage">
+        <input type="number" name="storage" id="storage" formControlName="storage">
         <label for="color">Color</label>
-        <input type="text" name="color" id="color">
+        <input type="text" name="color" id="color" formControlName="color">
         <label for="retail-price">Retail Price ($)</label>
-        <input type="number" name="retailprice" id="retailprice">
+        <input type="number" name="retailprice" id="retailprice" formControlName="retailPrice">
         <label for="wholesale-price">Wholesale Price ($)</label>
-        <input type="number" name="wholesale-price" id="wholesale-price">
+        <input type="number" name="wholesale-price" id="wholesale-price" formControlName="wholesalePrice">
         <button type="submit">Add Variant</button>
     </form>
 </div>
+<app-message></app-message>
 

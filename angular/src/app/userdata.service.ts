@@ -18,4 +18,9 @@ export class UserdataService {
   register(userdata:object):Observable<any>{
     return this.http.post(`${this.apiUrl}/register`, userdata)
   }
+
+  getUsersList(PageNumber:number = 1, PageSize:number = 25):Observable<any>
+  {
+    return this.http.get(`${this.apiUrl}/getuserslist?PageNumber=${PageNumber}&PageSize=${PageSize}`, { withCredentials: true})
+  }
 }
