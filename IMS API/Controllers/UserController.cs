@@ -39,32 +39,26 @@ namespace IMS_API.Controllers
         [HttpPost("register")]
         public IActionResult RegisterUser(RegisterUserDTO registerUserDTO)
         {
-            switch(registerUserDTO.userType.ToLower())
+            if(registerUserDTO.userType.ToLower() == "user")
             {
-                case "admin":
-                    //create the request here
-                    break;
-                case "staff":
-                    //create the request here
-                    break;
-                case "user":
-                    var result  = _dbContext.RegisterUser(registerUserDTO);
-                    if(result == "success")
-                    {
-                        return Ok(new { message = "Registeration Succesful"});
-                    }
-                    else if(result == "username conflict")
-                    {
-                        return BadRequest(new { message = "Username already exists" });
-                    }
-                    else
-                    {
-                        return BadRequest(new { message = "Some Error Occured" });
-                    }
-                default:
-                    return BadRequest(new { message = "Incorrect Form Data"});
+                var result = _dbContext.RegisterUser(registerUserDTO);
+                if (result == "success")
+                {
+                    return Ok(new { message = "Registeration Succesful" });
+                }
+                else if (result == "username conflict")
+                {
+                    return BadRequest(new { message = "Username already exists" });
+                }
+                else
+                {
+                    return BadRequest(new { message = "Some Error Occured" });
+                }
             }
-            return BadRequest(new { message = "Some Error Occured" });
+            else
+            {
+                return Unauthorized(new { message = "You are not authorized to perform this action" });
+            }
         }
 
         [HttpGet("getuserslist")]
@@ -77,6 +71,31 @@ namespace IMS_API.Controllers
             {
                 var result = _dbContext.GetUsersList(PageNumber, PageSize);
                 return Ok(result);
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
+        [HttpPost("adduser")]
+        [Authorize]
+        public IActionResult addUser(RegisterUserDTO registerUserDTO)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.RegisterUser(registerUserDTO);
+                if (result == "success")
+                {
+                    return Ok(new { message = "Registeration Succesful" });
+                }
+                else if (result == "username conflict")
+                {
+                    return BadRequest(new { message = "Username already exists" });
+                }
+                else
+                {
+                    return BadRequest(new { message = "Some Error Occured" });
+                }
             }
             return Unauthorized(new { message = "You don't have the permission to complete this action" });
         }

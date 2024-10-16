@@ -15,7 +15,8 @@ import { RegisterComponent } from './register/register.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
 import { MobiledataComponent } from './mobiledata/mobiledata.component';
 import { UserdataComponent } from './userdata/userdata.component';
-
+import { AdduserComponent } from './adduser/adduser.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 export const routes: Routes = [
     {path: '', component: DashboardPageComponent},
@@ -33,5 +34,7 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'reset-password', component: ResetPageComponent},
     {path: 'mobiledata/:id', component: MobiledataComponent},
-    {path: 'userdata/:id', component: UserdataComponent}
+    {path: 'userdata/:id', component: UserdataComponent},
+    {path: 'adduser', component: AdduserComponent},
+    {path: 'aboutus', component: AboutusComponent}
 ];

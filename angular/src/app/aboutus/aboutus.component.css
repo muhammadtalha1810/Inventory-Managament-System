@@ -1,0 +1,109 @@
+.about-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .header .logo {
+    width: 150px;
+    margin-right: 20px;
+  }
+  
+  .header h1 {
+    font-size: 42px;
+    color: #00796b;
+  }
+  
+  .content-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  
+  .text-block {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .text-block p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #333;
+  }
+  
+  .image-block {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .feature-image {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .features-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .features-section h2 {
+    font-size: 36px;
+    color: #00796b;
+    margin-bottom: 30px;
+  }
+  
+  .features-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .feature-card {
+    max-width: 300px;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .feature-card img {
+    max-width: 100px;
+    margin-bottom: 15px;
+  }
+  
+  .feature-card h3 {
+    font-size: 24px;
+    color: #00796b;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .mission-statement {
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: center;
+    color: #333;
+    padding-top: 30px;
+    border-top: 1px solid #ddd;
+  }
+  

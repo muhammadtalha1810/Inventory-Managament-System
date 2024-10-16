@@ -43,4 +43,7 @@ export class UsersPageComponent implements OnInit {
   {
     this.router.navigate([`/userdata/${userid}`]);
   }
+  adduser():void{
+    this.router.navigate(['/adduser'])
+  }
 }

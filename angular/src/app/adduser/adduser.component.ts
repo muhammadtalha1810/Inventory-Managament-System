@@ -5,13 +5,13 @@ import { NgClass } from '@angular/common';
 import { UserdataService } from '../userdata.service';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-adduser',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule, NgClass],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  templateUrl: './adduser.component.html',
+  styleUrl: './adduser.component.css'
 })
-export class RegisterComponent {
+export class AdduserComponent {
   errorMesaage:string = '';
   registerForm: FormGroup;
   constructor(private fb: FormBuilder, private userdataservice: UserdataService, private router: Router){
@@ -19,7 +19,7 @@ export class RegisterComponent {
       userName: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
-      //userType: ['', Validators.required],
+      userType: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: [''],
       phoneNumber: ['', Validators.required],
@@ -33,7 +33,6 @@ export class RegisterComponent {
   onSubmit() {
     //console.log(this.registerForm.value);
     var formdata = this.registerForm.value;
-    formdata.userType = "user";
     this.userdataservice.register(formdata).subscribe(
       response => {
         this.router.navigate(['/login']);

@@ -1,7 +1,7 @@
 <div id="main-container">
     <div id="top-bar">
         <h3 id="top-heading">Users</h3>
-        <button id="adduser-btn">Add User</button>
+        <button id="adduser-btn" (click)="adduser()">Add User</button>
     </div>
     <div id="cards-container">
         <div id="user-card" *ngFor="let user of users">
