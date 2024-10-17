@@ -63,29 +63,6 @@ namespace IMS_API.Controllers
         }
 
 
-        private async Task<LoginObjectDTO> AuthenticateUser(string userName, string password)
-        {
-            // For demonstration purposes, authenticate a user
-            // with a static email address. Ignore the password.
-            // Assume that checking the database takes 500ms
-
-            await Task.Delay(500);
-
-            if (userName == "talha" && password == "talha2002")
-            {
-                return new LoginObjectDTO()
-                {
-                    Username = "talha",
-                    Password = "talha2002"
-                };
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-
         
         [HttpPost("logout")]
         [Authorize]

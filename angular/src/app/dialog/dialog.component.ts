@@ -14,13 +14,13 @@ export class DialogComponent {
   @Input() message: string = "This is a sample dialog message";
   @Input() primaryButtonText: string = "Approve";
   @Input() cancelButtonText: string = "Cancel";
-  @Output() dialogresult: EventEmitter<string> = new EventEmitter<string>();
+  @Output() dialogresult: EventEmitter<Boolean> = new EventEmitter<Boolean>();
   primary_click(){
-    this.dialogresult.emit("primary");
+    this.dialogresult.emit(true);
     this.className = 'hidden';
   }
   secondary_click(){
-    this.dialogresult.emit("secondary");
+    this.dialogresult.emit(false);
     this.className = 'hidden';
   }
   openDialog(){

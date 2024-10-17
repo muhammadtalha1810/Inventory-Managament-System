@@ -1,35 +1,36 @@
-<div id="main-container" (submit)="addStock($event)">
+<div id="main-container" >
     <h4>Add Stock</h4>
-    <form>
+    <form [formGroup]="addstockform"  (ngSubmit)="addStock()">
         <label for="brand">Brand</label>
-        <select name="brand" id="brand">
-            <option value="brand1">Brand 1</option>
-            <option value="brand2">Brand 2</option>
-        </select>
-        <label for="model">Model</label>
-        <select name="model" id="model">
-            <option value="model1">Model 1</option>
-            <option value="model2">Model 2</option>
-        </select>
-        <label for="variant">Variant</label>
-        <select name="variant" id="variant">
-            <option value="variant1">Variant 1</option>
-            <option value="variant2">Variant 2</option>
-        </select>
-        <label for="manufacturer">Manufacturer</label>
-        <select name="manufacturer" id="manufacturer">
-            <option value="manufacturer1">Manufacturer 1</option>
-            <option value="manufacturer2">Manufacturer 2</option>
-        </select>
+        <input type="text" id="brand-input" list="brand-list" formControlName="brandName" (input)="brandinput()">
+        <datalist id="brand-list">
+            <option *ngFor="let brand of brandnameslist">{{brand}}</option>
+        </datalist>
+        <label for="model-name">Model</label>
+        <input type="text" list="model-names" formControlName="modelName" id="model-name" (input)="onModelNameChange()">
+        <datalist id="model-names">
+            <option *ngFor="let model of modelsNames" [value]="model">
+        </datalist>
+        <label for="variant-name">Variant</label>
+        <input type="text"  list="variant-names" formControlName="variantName" id="variant-name" (input)="onVariantNameChange()">
+        <datalist id="variant-names">
+            <option *ngFor="let variant of variantNames" [value]="variant">
+        </datalist>
+        <label for="manufacturer-name">Manufacturer</label>
+        <input type="text" list="manufacturer-names" formControlName="manufacturerName" id="manufacturer-name" (input)="onManufacturerNameChange()">
+        <datalist id="manufacturer-names">
+            <option *ngFor="let manufacturer of manufacturerNames" [value]="manufacturer">
+        </datalist>
         <label for="quantity">Quantity</label>
         <input type="number" name="quantity" id="quantity">
-        <label for="shipment-id">Shipment ID</label>
-        <input type="number" name="shipment-id" id="shipment-id">
-        <label for="warehouse">Warehouse</label>
-        <select name="warehouse" id="warehouse">
-            <option value="warehouse1">Warehouse 1</option>
-            <option value="warehouse2">Warehouse 2</option>
-        </select>
+        <!-- <label for="shipment-id">Shipment ID</label>
+        <input type="number" name="shipment-id" id="shipment-id"> -->
+        <label for="warehouse-name">Warehouse</label>
+        <input type="text" list="warehouse-names" formControlName="warehouseName" id="warehouse-name" (input)="onWarehouseNameChange()">
+        <datalist id="warehouse-names">
+            <option *ngFor="let warehouse of warehouseNames" [value]="warehouse">
+        </datalist>
         <button type="submit">Add Stock</button>
     </form>
+    <app-message></app-message>
 </div>

@@ -344,6 +344,59 @@ namespace IMS_API.Data_Access_Layer
             }
         }
 
+        public string AddModel(MobileModelDTO mobileModel)
+        {
+            var models = new List<ManufacturerDTO>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddModel", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@BrandName", mobileModel.BrandName);
+                cmd.Parameters.AddWithValue("@ModelName", mobileModel.ModelName);
+                cmd.Parameters.AddWithValue("@ReleaseDate",mobileModel.ReleaseDate);
+                cmd.Parameters.AddWithValue("@ScreenSize", mobileModel.ScreenSize);
+                cmd.Parameters.AddWithValue("@Battery", mobileModel.Battery);
+                cmd.Parameters.AddWithValue("@Charging", mobileModel.Charging);
+                cmd.Parameters.AddWithValue("@SimSlots", mobileModel.SimSlots);
+
+                var resultparameter = new SqlParameter("@Result", SqlDbType.VarChar, 100);
+                resultparameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(resultparameter);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return resultparameter.Value.ToString();
+            }
+        }
+
+        public string AddBrand(BrandDTO brand)
+        {
+            var models = new List<ManufacturerDTO>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddBrand", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@DisplayName", brand.DisplayName);
+                cmd.Parameters.AddWithValue("@LegalName", brand.LegalName);
+                cmd.Parameters.AddWithValue("@Description", brand.Description);
+                cmd.Parameters.AddWithValue("@WebsiteUrl", brand.WebsiteUrl);
+
+                var resultparameter = new SqlParameter("@Result", SqlDbType.VarChar, 100);
+                resultparameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(resultparameter);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return resultparameter.Value.ToString();
+            }
+        }
+
 
         public string RegisterUser(RegisterUserDTO registerUserDTO)
         {
@@ -363,6 +416,52 @@ namespace IMS_API.Data_Access_Layer
                 cmd.Parameters.AddWithValue("@Address", registerUserDTO.streetAddress + ", "+ registerUserDTO.city + ", " + registerUserDTO.state + ", " + registerUserDTO.country);
 
                 var result = new SqlParameter("@Result", SqlDbType.VarChar, 200);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+                conn.Open();
+                cmd.ExecuteReader();
+                conn.Close();
+                return result.Value.ToString();
+            }
+        }
+
+        public string UpdateUser(MyUser myUser)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("UpdateUser", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@UserId", myUser.UserId);
+                cmd.Parameters.AddWithValue("@FirstName", myUser.FirstName);
+                cmd.Parameters.AddWithValue("@LastName", myUser.LastName);
+                cmd.Parameters.AddWithValue("@Email", myUser.Email);
+                cmd.Parameters.AddWithValue("@Description", myUser.Description);
+                cmd.Parameters.AddWithValue("@PhoneNumber", myUser.PhoneNumber);
+                cmd.Parameters.AddWithValue("@Address", myUser.Address);
+
+                var result = new SqlParameter("@Result", SqlDbType.VarChar, 100);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+                conn.Open();
+                cmd.ExecuteReader();
+                conn.Close();
+                return result.Value.ToString();
+            }
+        }
+
+        public string DeleteUser(int userid)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("DeleteUser", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@UserId", userid);
+
+                var result = new SqlParameter("@Result", SqlDbType.VarChar, 100);
                 result.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(result);
                 conn.Open();

@@ -9,7 +9,7 @@
             <span>{{user.email}}</span>
             <div id="right-container">
                 <button id="view-btn" (click)="openuser(user.userId)">View User</button>
-                <button id="delete-btn">Delete User</button>
+                <button id="delete-btn" (click)="deleteuser(user.userId)">Delete User</button>
             </div>
         </div>
     </div>
@@ -25,4 +25,6 @@
         <button id="prev-page-btn" (click)="prevPage()" class="page-btn" [disabled]="current_page == 1">&lt;</button>
         <button id="next-page-btn" (click)="nextPage()" class="page-btn" [disabled]="current_page == total_pages">&gt;</button>
     </div>
+    <app-message id="app-msg"></app-message>
 </div>
+<app-dialog (dialogresult)="handleDialogResult($event)"></app-dialog>

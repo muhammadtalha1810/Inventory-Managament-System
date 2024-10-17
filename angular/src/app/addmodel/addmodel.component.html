@@ -1,26 +1,27 @@
-<div id="main-container" (submit)="addModel($event)">
+<div id="main-container">
     <h4>Add Model</h4>
-    <form>
-        <label for="brand">Brand</label>
-        <select name="brand" id="brand">
-            <option value="brand1">Brand 1</option>
-            <option value="brand2">Brand 2</option>
-        </select>
-        <label for="model-name">Model Name</label>
-        <input type="text" name="model-name" id="model-name">
-        <label for="release-date">Release Date</label>
-        <input type="date" name="release-date" id="release-date">
+    <form [formGroup]="addmodelform" (ngSubmit)="addModel()">
+        <label for="brandName">Brand</label>
+        <input type="text" id="brandName-input" list="brand-list" formControlName="brandName" (input)="brandinput()">
+        <datalist id="brand-list">
+            <option *ngFor="let brand of brandnameslist">{{brand}}</option>
+        </datalist>
+        <label for="modelName-input">Model Name</label>
+        <input type="text" name="model-name" id="modelName-input" formControlName="modelName">
+        <label for="release-date-input">Release Date</label>
+        <input type="date" name="release-date" id="release-date-input" formControlName="releaseDate">
         <hr>
         <h4 id="specs-heading">Specifications</h4>
-        <label for="screen-size">Screen Size (inches)</label>
-        <input type="number" name="screen-size" id="screen-size">
-        <label for="battery-capacity">Battery Capacity (mAh)</label>
-        <input type="number" name="battery-capacity" id="battery-capacity">
-        <label for="charging-speed">Charging Speed (W)</label>
-        <input type="number" name="charging-speed" id="charging-speed">
-        <label for="sim-slots">Sim Slots</label>
-        <input type="number" name="sim-slots" id="sim-slots">
+        <label for="screen-size-input">Screen Size (inches)</label>
+        <input type="number" name="screen-size" id="screen-size-input" formControlName="screenSize">
+        <label for="battery-capacity-input">Battery Capacity (mAh)</label>
+        <input type="number" name="battery-capacity" id="battery-capacity-input" formControlName="battery">
+        <label for="charging-speed-input">Charging Speed (W)</label>
+        <input type="number" name="charging-speed" id="charging-speed-input" formControlName="charging">
+        <label for="sim-slots-input">Sim Slots</label>
+        <input type="number" name="sim-slots" id="sim-slots-input" formControlName="simSlots">
         <button type="submit">Add Model</button>
     </form>
+    <app-message></app-message>
 </div>
 

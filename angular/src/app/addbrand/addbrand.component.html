@@ -1,14 +1,15 @@
-<div id="main-container" (submit)="addBrand($event)">
+<div id="main-container">
     <h4>Add Brand</h4>
-    <form>
+    <form [formGroup]="addbrandform" (ngSubmit)="addBrand()">
         <label for="brand-display-name">Brand Display Name</label>
-        <input type="text" name="brand-display-name" id="brand-display-name">
+        <input type="text" name="brand-display-name" id="brand-display-name" formControlName="displayName">
         <label for="brand-legal-name">Brand Legal Name</label>
-        <input type="text" name="brand-legal-name" id="brand-legal-name">
+        <input type="text" name="brand-legal-name" id="brand-legal-name" formControlName="legalName">
         <label for="brand-description">Brand Description</label>
-        <input type="text" name="brand-description" id="brand-description">
+        <input type="text" name="brand-description" id="brand-description" formControlName="description">
         <label for="website-url">Website URL</label>
-        <input type="text" name="website-url" id="website-url">
+        <input type="text" name="website-url" id="website-url" formControlName="websiteUrl">
         <button type="submit">Add Brand</button>
     </form>
+    <app-message></app-message>
 </div>

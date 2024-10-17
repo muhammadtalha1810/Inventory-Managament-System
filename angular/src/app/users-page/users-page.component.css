@@ -57,7 +57,7 @@
     padding: 25px 30px;
     border-radius: 20px;
     grid-template-columns: repeat(3, 1fr);
-    background-color: bisque;
+    background-color: rgb(247, 234, 219);
     transition: 0.3s;
 }
 #right-container{

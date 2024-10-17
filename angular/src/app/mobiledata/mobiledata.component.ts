@@ -70,7 +70,7 @@ export class MobiledataComponent implements OnInit {
     this.dialog.openDialog();
   }
 
-  handleDialogResult(result: string){
+  handleDialogResult(result: Boolean){
     console.log(result); //primary or secondary
   }
 

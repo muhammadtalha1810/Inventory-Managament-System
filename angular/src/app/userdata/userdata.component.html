@@ -1,1 +1,42 @@
-<p>User Id:{{userid}}</p>
+<div id="main-container">
+    <div id="right-container">
+        <div id="edit-container">
+            <button [ngClass]="iseditmode ? 'inactivebutton' : 'activebutton'" (click)="iseditmode = false">View Mode</button>
+            <button [ngClass]="iseditmode ? 'activebutton' : 'inactivebutton'" (click)="iseditmode = true">Edit Mode</button>
+            <button id="update-btn" (click)="updatedata()">Update Data</button>
+        </div>
+        <h3>User Data</h3>
+        <form id="model-data-form" [formGroup]="userdataform">
+            <label for="userId-input">User Id</label>
+            <input type="number" class="input-view" readonly formControlName = "userId" id="userId-input">
+            <label for="modelName-input">User Name</label>
+            <input type="text" readonly class="input-view" formControlName = "userName" id="userName-input">
+            
+            <label for="firstName-input">First Name</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "firstName" id="firstName-input">
+            <label for="lastName-input">Last Name</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "lastName" id="lastName-input">
+            <label for="email-input">Email</label>
+            <input type="email" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "email" id="email-input">
+            <label for="userType-input">User Type</label>
+            <input type="text" readonly class="input-view" formControlName = "userType" id="userType-input">
+            <label for="description-input">Description</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "description" id="description-input">
+            <label for="phoneNumber-input">Phone Number</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "phoneNumber" id="phoneNumber-input">
+            <label for="address-input">Address</label>
+            <input type="text" [readonly]="!iseditmode" [ngClass]="iseditmode ? 'input-edit' : 'input-view'" formControlName = "address" id="address-input">
+        </form>
+        <app-message id="app-msg"></app-message>
+    </div>
+</div>
+<app-dialog (dialogresult)="handleDialogResult($event)"></app-dialog>
+
+
+
+<!-- <div>
+    <p>username: {{userData.userName}}</p>
+    <p>email: {{userData.email}}</p>
+    <p>Full Name: {{userData.firstName}} {{userData.lastName}}</p>
+    <p>UserType: {{userData.userType}}</p>
+</div> -->

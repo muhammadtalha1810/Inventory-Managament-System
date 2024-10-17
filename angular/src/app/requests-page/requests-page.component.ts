@@ -20,7 +20,7 @@ export class RequestsPageComponent{
     this.dialog.setDetails("Decline Request", "Are you sure you want to decline this request?", "Decline", "Cancel");
     this.dialog.openDialog();
   }
-  handleDialogResult(result: string){
+  handleDialogResult(result: Boolean){
     console.log(result); //primary or secondary
   }
 }

@@ -1,4 +1,12 @@
 <div id="requests-list">
+    <div id="top-bar">
+        <select id="request-type">
+            <option value="Select type" disabled>Select type</option>
+            <option value="Pending">Pending</option>
+            <option value="Approved">Approved</option>
+            <option value="Declined">Declined</option>
+        </select>
+    </div>
     <div id="request-item" *ngFor="let request of requests">
         <p id="request-name">{{request}}</p>
         <div id="right-container">

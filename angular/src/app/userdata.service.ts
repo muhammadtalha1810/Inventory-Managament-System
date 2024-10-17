@@ -15,6 +15,10 @@ export class UserdataService {
     return this.http.get(`${this.apiUrl}/getdetails`, { withCredentials: true , headers: header});
   }
 
+  getUserDataById(userid:number|null): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${userid}`, { withCredentials: true });
+  }
+
   register(userdata:object):Observable<any>{
     return this.http.post(`${this.apiUrl}/register`, userdata)
   }
@@ -22,5 +26,15 @@ export class UserdataService {
   getUsersList(PageNumber:number = 1, PageSize:number = 25):Observable<any>
   {
     return this.http.get(`${this.apiUrl}/getuserslist?PageNumber=${PageNumber}&PageSize=${PageSize}`, { withCredentials: true})
+  }
+
+  updateUser(userdata:object):Observable<any>
+  {
+    return this.http.put(this.apiUrl, userdata, { withCredentials: true})
+  }
+
+  deleteUser(userid:number)
+  {
+    return this.http.delete(`${this.apiUrl}/${userid}`, { withCredentials: true });
   }
 }
