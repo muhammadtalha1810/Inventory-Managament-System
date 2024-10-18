@@ -37,4 +37,20 @@ export class UserdataService {
   {
     return this.http.delete(`${this.apiUrl}/${userid}`, { withCredentials: true });
   }
+
+  getRequests(PageNumber:number = 1, PageSize:number = 25, RequestStatus:string = 'pending'):Observable<any>
+  {
+    return this.http.get(`${this.apiUrl}/getrequests?PageNumber=${PageNumber}&PageSize=${PageSize}&RequestStatus=${RequestStatus}`, { withCredentials: true})
+  }
+
+  approveRequest(requestid:number)
+  {
+    return this.http.get(`${this.apiUrl}/approverequest?RequestId=${requestid}`,  { withCredentials: true });
+  }
+
+  declineRequest(requestid:number)
+  {
+    return this.http.get(`${this.apiUrl}/declinerequest?RequestId=${requestid}`,  { withCredentials: true });
+  }
+  
 }

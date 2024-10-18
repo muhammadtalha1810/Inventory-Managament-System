@@ -1,18 +1,41 @@
 <div id="requests-list">
     <div id="top-bar">
-        <select id="request-type">
-            <option value="Select type" disabled>Select type</option>
+        <label for="request-type">Select the request Type</label>
+        <select id="request-type" [(ngModel)]="requestType" (change)="fetchRequests()">
             <option value="Pending">Pending</option>
             <option value="Approved">Approved</option>
             <option value="Declined">Declined</option>
         </select>
     </div>
     <div id="request-item" *ngFor="let request of requests">
-        <p id="request-name">{{request}}</p>
-        <div id="right-container">
-            <button id="approve-button" (click)="openApproveDialog()">Approve</button>
-            <button id="decline-button" (click)="openDeclineDialog()">Decline</button>
+        <div id="left-container">
+            <p id="request-name">{{request.title}}</p>
+            <p id="request-body">{{request.body}}</p>
         </div>
+        
+        <div id="right-container" *ngIf="request.status == 'pending'; else elseBlock">
+            <button id="approve-button" (click)="openApproveDialog(request.id)">Approve</button>
+            <button id="decline-button" (click)="openDeclineDialog(request.id)">Decline</button>
+        </div>
+        <ng-template #elseBlock>
+            <p [ngClass]="request.status == 'approved'? 'approved-text':'declined-text'">
+                {{request.status}}
+            </p>
+        </ng-template>
+        
     </div>
+    <p *ngIf="requests.length == 0" id="no-requests-found">No Requests found</p>
+    <div id="pagination-pane">
+        <select id="page-size-select" [(ngModel)]="page_size" (change)="fetchRequests()">
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+        </select>
+        <p id="page-info">Page {{current_page}} of {{total_pages}}</p>
+        <button id="prev-page-btn" (click)="prevPage()" class="page-btn" [disabled]="current_page == 1">&lt;</button>
+        <button id="next-page-btn" (click)="nextPage()" class="page-btn" [disabled]="current_page == total_pages">&gt;</button>
+    </div>
+    <app-message id="app-msg"></app-message>
 </div>
 <app-dialog (dialogresult)="handleDialogResult($event)"></app-dialog>

@@ -159,5 +159,20 @@ namespace IMS_API.Controllers
             }
             return Unauthorized(new { message = "You don't have the permission to complete this action" });
         }
+
+
+        [HttpGet("getorders")]
+        [Authorize]
+        public IActionResult GetRequests(int PageNumber, int PageSize, string OrderStatus)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.GetOrders(PageNumber, PageSize, OrderStatus);
+                return Ok(result);
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
     }
 }

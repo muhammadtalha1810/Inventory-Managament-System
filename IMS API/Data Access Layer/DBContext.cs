@@ -583,5 +583,134 @@ namespace IMS_API.Data_Access_Layer
             }
         }
 
+        public object GetRequests(int PageNumber, int PageSize, string requeststatus)
+        {
+            List<Object> requests = new List<Object>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetRequests", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@RequestType", requeststatus);
+                cmd.Parameters.AddWithValue("@PageNumber", PageNumber);
+                cmd.Parameters.AddWithValue("@PageSize", PageSize);
+
+                var totalPagesParam = new SqlParameter("@TotalPages", SqlDbType.Int);
+                totalPagesParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(totalPagesParam);
+
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        try
+                        {
+                            var request = new
+                            {
+                                Id = (int)reader["REQUESTID"],
+                                Title = reader["REQUEST_TITLE"].ToString(),
+                                Body = reader["REQUEST_BODY"].ToString(),
+                                Status = reader["REQUEST_STATUS"].ToString(),
+                            };
+                            requests.Add(request);
+                        }
+                        catch { }
+                    }
+
+                }
+                conn.Close();
+                return new { data = requests, totalPages = totalPagesParam.Value };
+            }
+        }
+
+        public object GetOrders(int PageNumber, int PageSize, string OrderStatus)
+        {
+            List<Object> orders = new List<Object>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetOrders", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@OrderStatus", OrderStatus);
+                cmd.Parameters.AddWithValue("@PageNumber", PageNumber);
+                cmd.Parameters.AddWithValue("@PageSize", PageSize);
+
+                var totalPagesParam = new SqlParameter("@TotalPages", SqlDbType.Int);
+                totalPagesParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(totalPagesParam);
+
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        try
+                        {
+                            var order = new
+                            {
+                                Id = (int)reader["ORDERID"],
+                                TimeStamp = reader["ORDERDATETIME"].ToString(),
+                                PaymentMethod = reader["PAYMENTMETHOD"].ToString(),
+                                TotalPrice = reader["TOTALPRICE"].ToString(),
+                                Status = reader["ORDERSTATUS"].ToString()
+                            };
+                            orders.Add(order);
+                        }
+                        catch { }
+                    }
+
+                }
+                conn.Close();
+                return new { data = orders, totalPages = totalPagesParam.Value };
+            }
+        }
+
+        public string ApproveRequest(int RequestId)
+        {
+            List<Object> requests = new List<Object>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("ApproveRequest", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@RequestId", RequestId);
+
+                var result = new SqlParameter("@Result", SqlDbType.VarChar, 100);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return result.Value.ToString();
+            }
+        }
+
+        public string DeclineRequest(int RequestId)
+        {
+            List<Object> requests = new List<Object>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("DeclineRequest", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@RequestId", RequestId);
+
+                var result = new SqlParameter("@Result", SqlDbType.VarChar, 100);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return result.Value.ToString();
+            }
+        }
+
     }
 }

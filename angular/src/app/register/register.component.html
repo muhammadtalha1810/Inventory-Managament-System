@@ -1,8 +1,8 @@
 <h3>Register an account</h3>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div id="item">
-        <label for="username" >Username</label>
-        <input type="text" id="username" name="username" formControlName="userName">
+        <label for="username" >Username *</label>
+        <input type="text" id="username" name="username" required formControlName="userName">
     </div>
     <div id="item">
         <label for="password">Password</label>

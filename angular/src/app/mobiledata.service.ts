@@ -67,4 +67,8 @@ export class MobiledataService {
   {
     return this.http.post(`${this.apiUrl}/addstock`, body, { withCredentials: true });
   }
+  getOrders(PageNumber:number = 1, PageSize:number = 25, OrderStatus:string = 'initiated'):Observable<any>
+  {
+    return this.http.get(`${this.apiUrl}/getorders?PageNumber=${PageNumber}&PageSize=${PageSize}&OrderStatus=${OrderStatus}`, { withCredentials: true})
+  }
 }

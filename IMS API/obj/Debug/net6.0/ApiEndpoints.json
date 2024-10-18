@@ -165,6 +165,32 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetRequests",
+    "RelativePath": "api/MobileModel/getorders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
     "Method": "GetModelData",
     "RelativePath": "api/MobileModel/mobiledata/{modelId}",
     "HttpMethod": "GET",
@@ -245,12 +271,70 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.UserController",
+    "Method": "ApproveRequest",
+    "RelativePath": "api/user/approverequest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RequestId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.UserController",
+    "Method": "DeclineRequest",
+    "RelativePath": "api/user/declinerequest",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "RequestId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.UserController",
     "Method": "GetDetails",
     "RelativePath": "api/user/getdetails",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.UserController",
+    "Method": "GetRequests",
+    "RelativePath": "api/user/getrequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "RequestStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

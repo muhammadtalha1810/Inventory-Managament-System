@@ -75,6 +75,63 @@ namespace IMS_API.Controllers
             return Unauthorized(new { message = "You don't have the permission to complete this action" });
         }
 
+        [HttpGet("getrequests")]
+        [Authorize]
+        public IActionResult GetRequests(int PageNumber, int PageSize, string RequestStatus)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.GetRequests(PageNumber, PageSize, RequestStatus);
+                return Ok(result);
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
+        [HttpGet("approverequest")]
+        [Authorize]
+        public IActionResult ApproveRequest(int RequestId)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.ApproveRequest(RequestId);
+                if (result == "success")
+                {
+                    return Ok(new { message = "Request Approved" });
+                }
+                else
+                {
+                    return BadRequest(new { message = result });
+                }
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
+        [HttpGet("declinerequest")]
+        [Authorize]
+        public IActionResult DeclineRequest(int RequestId)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.DeclineRequest(RequestId);
+                if (result == "success")
+                {
+                    return Ok(new { message = "Request Declined" });
+                }
+                else
+                {
+                    return BadRequest(new { message = result });
+                }
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
+
         [HttpPost("adduser")]
         [Authorize]
         public IActionResult addUser(RegisterUserDTO registerUserDTO)
