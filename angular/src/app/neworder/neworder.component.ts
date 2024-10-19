@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgFor, NgIf, NgClass } from '@angular/common';
 import { DialogComponent } from '../dialog/dialog.component';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageComponent } from '../message/message.component';
 import { MobiledataService } from '../mobiledata.service';
 
 @Component({
-  selector: 'app-invoices-page',
+  selector: 'app-neworder',
   standalone: true,
-  imports: [NgFor, DialogComponent, NgIf,  FormsModule, MessageComponent, NgClass],
-  templateUrl: './invoices-page.component.html',
-  styleUrl: './invoices-page.component.css'
+  imports: [NgFor, DialogComponent, NgIf,  FormsModule, MessageComponent, NgClass, ReactiveFormsModule],
+  templateUrl: './neworder.component.html',
+  styleUrl: './neworder.component.css'
 })
-export class InvoicesPageComponent {
+export class NeworderComponent {
   @ViewChild(DialogComponent) dialog : any;
   @ViewChild(MessageComponent) message : any;
   orderType = 'All';
@@ -22,6 +22,8 @@ export class InvoicesPageComponent {
   page_size = 25;
   current_page = 1;
   total_pages = 1;
+  varinatnameslist:any[] = [];
+  variantName:FormControl = new FormControl('');
 
   constructor(private mobiledataservice:MobiledataService, private router: Router) { }
   
@@ -66,6 +68,18 @@ export class InvoicesPageComponent {
     this.router.navigate(['/neworder']);
   }
 
+  variantinput(){
+    let keyword: string = this.variantName.value;
+    if (keyword == '' || keyword == null) {
+      keyword = '';
+    }
+    this.mobiledataservice.getVariantNames(keyword, 5).subscribe(
+      (response) => {
+        this.varinatnameslist = response;
+      }
+    );
+  }
+
   handleDialogResult(result: Boolean){
     console.log(result); //primary or secondary
     // if(result)
@@ -94,5 +108,4 @@ export class InvoicesPageComponent {
     //   this.fetchorders();
     // }
   }
-
 }

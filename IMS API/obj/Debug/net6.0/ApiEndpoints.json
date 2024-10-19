@@ -191,6 +191,27 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetVariantNames",
+    "RelativePath": "api/MobileModel/getvariantsnames",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ResultsCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
     "Method": "GetModelData",
     "RelativePath": "api/MobileModel/mobiledata/{modelId}",
     "HttpMethod": "GET",

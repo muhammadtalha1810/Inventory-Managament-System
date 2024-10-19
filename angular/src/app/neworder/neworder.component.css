@@ -188,3 +188,14 @@ span{
     padding: 0px;
     margin: 0px;
 }
+#varinat-input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+    margin-left: 20px;
+}
+input:focus {
+    box-shadow: 0 0 5px 0 rgba(151, 151, 151, 0.589);
+}

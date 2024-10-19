@@ -1,15 +1,11 @@
 <div id="orders-list">
     <div id="top-bar">
-        <label for="order-type">Select the Order Status</label>
-        <select id="order-type" [(ngModel)]="orderType" (change)="fetchorders()">
-            <option value="All">All</option>
-            <option value="Pending">Pending</option>
-            <option value="Initiated">Initiated</option>
-            <option value="Shipped">Shipped</option>
-            <option value="Delivered">Delivered</option>
-            <option value="Declined">Declined</option>
-        </select>
-        <button class="open-order-btn" (click)="neworder()"><span>+  </span>    Place New Order</button>
+        <label for="order-type">Enter variant name</label>
+        <input type="text" id="varinat-input" list="variant-list" [formControl]="variantName" (input)="variantinput()">
+        <datalist id="variant-list">
+            <option *ngFor="let variant of varinatnameslist">{{variant.name}}</option>
+        </datalist>
+        <button class="open-order-btn" ><span>+  </span>    Add Varinat</button>
     </div>
     <div id="order-item" *ngFor="let order of orders">
         <div id="left-container">

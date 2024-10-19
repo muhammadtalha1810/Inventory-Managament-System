@@ -240,6 +240,35 @@ namespace IMS_API.Data_Access_Layer
             }
         }
 
+        public List<Object> GetVarinatsNames(string keyword, int resultsCount)
+        {
+            List<Object> varinats = new List<Object>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetVarinatsNames", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@SearchKeyword", keyword);
+                cmd.Parameters.AddWithValue("@ResultsCount", resultsCount);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var variant = new
+                        {
+                            Id = reader["VARIANTID"].ToString(),
+                            Name = reader["VARIANT_NAME"].ToString()
+                        };
+                        varinats.Add(variant);
+                    }
+                }
+                conn.Close();
+                return varinats;
+            }
+        }
+
         public List<String> GetManufacturersNames(string keyword, int resultsCount)
         {
             List<String> names = new List<String>();

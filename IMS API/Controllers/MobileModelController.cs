@@ -30,6 +30,12 @@ namespace IMS_API.Controllers
             return Ok(_dbContext.GetModelsNames(Keyword, ResultsCount));
         }
 
+        [HttpGet("getvariantsnames")]
+        public IActionResult GetVariantNames(string Keyword, int ResultsCount)
+        {
+            return Ok(_dbContext.GetVarinatsNames(Keyword, ResultsCount));
+        }
+
         [HttpGet("mobiledata/{modelId}")]
         public IActionResult GetModelData(int modelId)
         {
