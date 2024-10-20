@@ -1,1 +1,42 @@
-<p>order works!</p>
+<div id="orders-list" >
+    <div id="top-bar">
+        <label for="order-status">Change Order Status</label>
+        <select id="order-status" [value]="orderStatus" [(ngModel)]="orderStatus">
+            <option value="pending">Pending</option>
+            <option value="initiated">Initiated</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="declined">Declined</option>
+        </select>
+        <button class="open-order-btn" (click)="updateStatus()">Update Status</button>
+        <app-message id="app-msg"></app-message>
+    </div>
+    <div id="order-item" *ngFor="let orderitem of orderitems">
+        <div id="left-container">
+            <p id="order-name">{{orderitem.variantName}}</p>
+            <p id="order-body">Unit Price: {{orderitem.unitPrice}}$</p>
+            <p id="order-body">Quantity: {{orderitem.quantity}}</p>
+            <p>{{calculateItemPrice(orderitem.unitPrice,orderitem.quantity)}}$</p>
+        </div>
+    </div>
+    <p *ngIf="orderitems.length == 0" id="no-orders-found">No items found</p>
+    
+    <div id="order-pane">
+        <p>Total Price: {{getTotalPrice()}}</p>
+    </div>
+    
+
+
+    <div id="pagination-pane">
+        <select id="page-size-select" [(ngModel)]="page_size" (change)="fetchorders()">
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+            <option value="100">100</option>
+        </select>
+        <p id="page-info">Page {{current_page}} of {{total_pages}}</p>
+        <button id="prev-page-btn" (click)="prevPage()" class="page-btn" [disabled]="current_page == 1">&lt;</button>
+        <button id="next-page-btn" (click)="nextPage()" class="page-btn"
+            [disabled]="current_page == total_pages">&gt;</button>
+    </div>
+</div>

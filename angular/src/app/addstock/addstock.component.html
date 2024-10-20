@@ -1,7 +1,7 @@
 <div id="main-container" >
     <h4>Add Stock</h4>
     <form [formGroup]="addstockform"  (ngSubmit)="addStock()">
-        <label for="brand">Brand</label>
+        <!-- <label for="brand">Brand</label>
         <input type="text" id="brand-input" list="brand-list" formControlName="brandName" (input)="brandinput()">
         <datalist id="brand-list">
             <option *ngFor="let brand of brandnameslist">{{brand}}</option>
@@ -10,11 +10,11 @@
         <input type="text" list="model-names" formControlName="modelName" id="model-name" (input)="onModelNameChange()">
         <datalist id="model-names">
             <option *ngFor="let model of modelsNames" [value]="model">
-        </datalist>
+        </datalist> -->
         <label for="variant-name">Variant</label>
         <input type="text"  list="variant-names" formControlName="variantName" id="variant-name" (input)="onVariantNameChange()">
         <datalist id="variant-names">
-            <option *ngFor="let variant of variantNames" [value]="variant">
+            <option *ngFor="let variant of variantNames" [value]="variant.name">
         </datalist>
         <label for="manufacturer-name">Manufacturer</label>
         <input type="text" list="manufacturer-names" formControlName="manufacturerName" id="manufacturer-name" (input)="onManufacturerNameChange()">
@@ -22,7 +22,7 @@
             <option *ngFor="let manufacturer of manufacturerNames" [value]="manufacturer">
         </datalist>
         <label for="quantity">Quantity</label>
-        <input type="number" name="quantity" id="quantity">
+        <input type="number" name="quantity" id="quantity" formControlName="quantity">
         <!-- <label for="shipment-id">Shipment ID</label>
         <input type="number" name="shipment-id" id="shipment-id"> -->
         <label for="warehouse-name">Warehouse</label>

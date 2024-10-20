@@ -95,7 +95,7 @@ namespace IMS_API.Data_Access_Layer
                             ModelId = Convert.ToInt32(reader["MODELID"]),
                             ModelName = Convert.ToString(reader["MODEL_NAME"]),
                             ReleasaeDate = Convert.ToDateTime(reader["RELEASE_DATE"]).Date.ToString("yyyy-MM-dd"),
-                            Rating = Convert.ToDecimal(reader["OVERALL_RATING"]),
+                            Rating = reader["OVERALL_RATING"] == DBNull.Value ? 0 : Convert.ToInt32(reader["OVERALL_RATING"]),
                             BrandName = Convert.ToString(reader["BRAND_NAME"])
                         };
                     }
@@ -269,6 +269,166 @@ namespace IMS_API.Data_Access_Layer
             }
         }
 
+        public Object CheckVariantNameValidity(string variantName)
+        {
+            Object variant = new object();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("CheckVariantNameValidity", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@VariantName", variantName);
+                var result = new SqlParameter("@Result", SqlDbType.Bit);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        variant = new
+                        {
+                            Id = Convert.ToInt32(reader["VARIANTID"]),
+                            Price = Convert.ToDecimal(reader["RETAILPRICE"])
+                        };
+                    }
+                }
+                conn.Close();
+                return new { result = Convert.ToBoolean(result.Value) , data = variant};
+            }
+        }
+
+        public int PlaceOrder(string PaymentMethod, string Status, int? CustomerID = null, int? PlacedBy = null)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("PlaceOrder", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@PlacedBy", PlacedBy);
+                cmd.Parameters.AddWithValue("@PaymentMethod", PaymentMethod);
+                cmd.Parameters.AddWithValue("@CustomerId", CustomerID);
+                cmd.Parameters.AddWithValue("@OrderStatus", Status);
+                var orderid = new SqlParameter("@OrderId", SqlDbType.Int);
+                orderid.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(orderid);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return Convert.ToInt32(orderid.Value);
+            }
+        }
+
+        public string UpdateOrder(int orderid, string orderstatus)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("UpdateOrderStatus", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@OrderId", orderid);
+                cmd.Parameters.AddWithValue("@OrderStatus", orderstatus);
+                var result = new SqlParameter("@Result", SqlDbType.VarChar, 50);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return result.Value.ToString();
+            }
+        }
+
+        public Object GetOrder(int OrderId)
+        {
+            string? status = null;
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetOrder", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@OrderId", OrderId);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        status = reader["ORDERSTATUS"].ToString();
+                    }
+                }
+                conn.Close();
+            }
+            List<OrderItem> orderitems = new List<OrderItem>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetOrderItems", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@OrderId", OrderId);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var item = new OrderItem()
+                        {
+                            VariantName = reader["VARIANTNAME"].ToString(),
+                            VariantId = (int)reader["VARIANTID"],
+                            UnitPrice = (decimal)reader["UNITPRICE"],
+                            Quantity = (int)reader["QUANTITY"]
+                        };
+                        orderitems.Add(item);
+                    }
+                }
+                conn.Close();
+            }
+            return new { orderitems = orderitems, orderStatus = status };
+        }
+
+        public void AddOrderItem(OrderItem orderItem, int orderId)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddOrderItem", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@VariantId", orderItem.VariantId);
+                cmd.Parameters.AddWithValue("@Quantity", orderItem.Quantity);
+                cmd.Parameters.AddWithValue("@OrderId", orderId);
+                cmd.Parameters.AddWithValue("@UnitPrice", orderItem.UnitPrice);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
+        public int AddCustomer(CustomerDTO customerDTO)
+        {
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddCustomer", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@FirstName", customerDTO.FirstName);
+                cmd.Parameters.AddWithValue("@LastName", customerDTO.LastName);
+                cmd.Parameters.AddWithValue("@Email", customerDTO.Email);
+                cmd.Parameters.AddWithValue("@PhoneNumber", customerDTO.PhoneNumber);
+                var customeridparameter = new SqlParameter("@CustomerId", SqlDbType.Int);
+                customeridparameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(customeridparameter);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return Convert.ToInt32(customeridparameter.Value);
+            }
+        }
+
         public List<String> GetManufacturersNames(string keyword, int resultsCount)
         {
             List<String> names = new List<String>();
@@ -311,6 +471,30 @@ namespace IMS_API.Data_Access_Layer
                     while (reader.Read())
                     {
                         names.Add(reader["DISPLAY_NAME"].ToString());
+                    }
+                }
+                conn.Close();
+                return names;
+            }
+        }
+
+        public List<String> GetWareHouseNames(string keyword, int resultsCount)
+        {
+            List<String> names = new List<String>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("GetWareHouseNames", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@SearchKeyword", keyword == "null" ? null : keyword);
+                cmd.Parameters.AddWithValue("@ResultsCount", resultsCount);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        names.Add(reader["WNAME"].ToString());
                     }
                 }
                 conn.Close();
@@ -415,6 +599,32 @@ namespace IMS_API.Data_Access_Layer
                 cmd.Parameters.AddWithValue("@LegalName", brand.LegalName);
                 cmd.Parameters.AddWithValue("@Description", brand.Description);
                 cmd.Parameters.AddWithValue("@WebsiteUrl", brand.WebsiteUrl);
+
+                var resultparameter = new SqlParameter("@Result", SqlDbType.VarChar, 100);
+                resultparameter.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(resultparameter);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return resultparameter.Value.ToString();
+            }
+        }
+
+
+        public string AddStock(AddStockDTO stock)
+        {
+            var models = new List<ManufacturerDTO>();
+
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddStock", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@VariantName", stock.VariantName);
+                cmd.Parameters.AddWithValue("@ManufacturerName", stock.ManufacturerName);
+                cmd.Parameters.AddWithValue("@QUANTITY", stock.Quantity);
+                cmd.Parameters.AddWithValue("@WAREHOUSENAME", stock.WareHouseName);
 
                 var resultparameter = new SqlParameter("@Result", SqlDbType.VarChar, 100);
                 resultparameter.Direction = ParameterDirection.Output;
@@ -536,7 +746,7 @@ namespace IMS_API.Data_Access_Layer
             return user;
         }
 
-        public MyUser GetUser(int userId)
+        public MyUser GetUser(int? userId)
         {
             MyUser user = null;
             using (SqlConnection conn = new SqlConnection(_connectionString))

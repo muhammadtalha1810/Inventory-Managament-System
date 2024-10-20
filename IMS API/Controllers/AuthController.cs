@@ -105,5 +105,29 @@ namespace IMS_API.Controllers
                 return Ok(new { isLoggedIn = false, message = "User is not logged in." });
             }
         }
+
+        [HttpGet("getusertype")]
+        public IActionResult GetUserType()
+        {
+            // Check if the user is authenticated
+            if (User.Identity.IsAuthenticated)
+            {
+                var userid = int.Parse(User.FindFirst("UserId")?.Value); // or any other claim type
+                var user = _dbContext.GetUser(userid);
+                if (user != null)
+                {
+                    return Ok(new { UserType = user.UserType.ToLower() });
+                }
+                else
+                {
+                    return Ok(new { UserType = "None" });
+                }
+                
+            }
+            else
+            {
+                return Ok(new { UserType = "None" });
+            }
+        }
     }
 }

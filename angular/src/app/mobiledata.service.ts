@@ -19,11 +19,14 @@ export class MobiledataService {
   getVariantNames(keyword: string|null, resultsCount: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/getvariantsnames?Keyword=${keyword}&ResultsCount=${resultsCount}`);
   }
+  checkVariantNameValidity(variantName: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/checkvariantnamevalidity?VariantName=${variantName}`);
+  }
   getManufacturerNames(keyword: string|null, resultsCount: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/getmanufacturersnames?Keyword=${keyword}&ResultsCount=${resultsCount}`);
   }
   getWarehousesNames(keyword: string|null, resultsCount: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/getwarehousesnames?Keyword=${keyword}&ResultsCount=${resultsCount}`);
+    return this.http.get(`${this.apiUrl}/getwarehousenames?Keyword=${keyword}&ResultsCount=${resultsCount}`);
   }
 
   getMobileDatabyId(modelId: number|null): Observable<any> {
@@ -70,5 +73,18 @@ export class MobiledataService {
   getOrders(PageNumber:number = 1, PageSize:number = 25, OrderStatus:string = 'initiated'):Observable<any>
   {
     return this.http.get(`${this.apiUrl}/getorders?PageNumber=${PageNumber}&PageSize=${PageSize}&OrderStatus=${OrderStatus}`, { withCredentials: true})
+  }
+
+  placeOrder(body:any):Observable<any>
+  {
+    return this.http.post(`${this.apiUrl}/placeorder`, body, { withCredentials: true})
+  }
+  getOrder(orderid:number|null):Observable<any>
+  {
+    return this.http.get(`${this.apiUrl}/getorder/${orderid}`, { withCredentials: true})
+  }
+  updateOrderStatus(orderid:number|null, OrderStatus:string)
+  {
+    return this.http.get(`${this.apiUrl}/updateorderstatus?orderid=${orderid}&orderstatus=${OrderStatus}`, { withCredentials: true})
   }
 }

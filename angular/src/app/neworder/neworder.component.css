@@ -1,3 +1,4 @@
+
 #top-bar{
     margin: 0 0 30px 0;
 }
@@ -8,13 +9,13 @@ select{
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 250px;
+    width: fit-content;
     font-size: 1rem;
     font-weight: 400;
     color: #333;
     background-color: #f5f5f5;
     outline: none;
-    margin-left: auto;
+    margin-left: 20px;
     margin-right: 0px;
     transition: all 0.3s ease;
     &:focus{
@@ -25,29 +26,6 @@ select{
 }
 p{
     margin-bottom: 0px;
-}
-button {
-    color: black;
-    text-transform: capitalize;
-    font-size: 16px;
-    text-decoration:none;
-    padding: 5px 10px;
-    border-radius: 10px;
-    outline: none;
-    background-color: transparent;
-    border: none;
-    text-wrap: nowrap;
-    transition: 0.3s;
-}
-#approve-button:hover{
-    background-color: rgb(66, 172, 93);
-    color: white;
-    cursor: pointer;
-}
-#decline-button:hover{
-    background-color: rgb(207, 46, 46);
-    color: white;
-    cursor: pointer;
 }
 #orders-list
 {
@@ -74,7 +52,8 @@ button {
     margin-right: 10px;
     width: inherit;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(4,0.5fr);
+    align-items: center;
 }
 #right-container{
     display: flex;
@@ -82,25 +61,15 @@ button {
     margin-left: auto;
     width: fit-content;
 }
-dialog{
-    z-index: 1000;
-    display:grid;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    border: 1px solid lightgray;
-    position: fixed;
-    top: 50%;
-    left: 26%;
-    transform: translate(-50%, -50%);
-}
 #no-orders-found{
     font-size: 20px;
     margin: 200px auto;
+}
+#order-pane{
+    display: flex;
+    gap: 10px;
+    margin: 30px 10px 10px auto;
+    align-items: center;
 }
 #pagination-pane{
     display: flex;
@@ -129,42 +98,6 @@ dialog{
 #page-info{
     margin: 10px 10px;
 }
-.initiated-text{
-    text-transform: capitalize;
-    padding: 5px 10px;
-    background-color: rgb(94, 184, 211);
-    color: white;
-    border-radius: 5px;
-    min-width: 90px;
-    text-align: center;
-}
-.shipped-text{
-    text-transform: capitalize;
-    padding: 5px 10px;
-    background-color: rgb(56, 123, 143);
-    color: white;
-    border-radius: 5px;
-    min-width: 90px;
-    text-align: center;
-}
-.delivered-text{
-    text-transform: capitalize;
-    padding: 5px 10px;
-    background-color: rgb(66, 172, 93);
-    color: white;
-    border-radius: 5px;
-    min-width: 90px;
-    text-align: center;
-}
-.declined-text{
-    text-transform: capitalize;
-    padding: 5px 10px;
-    background-color: rgb(207, 46, 46);
-    color: white;
-    border-radius: 5px;
-    min-width: 90px;
-    text-align: center;
-}
 .open-order-btn{
     text-transform: capitalize;
     padding: 5px 15px;
@@ -173,15 +106,17 @@ dialog{
     color: white;
     text-align: center;
     margin: 0px 30px;
+    cursor: pointer;
+    border: none;
 }
-.pending-text{
-    text-transform: capitalize;
+.plus-minus-btn{
+    border: none;
     padding: 5px 10px;
-    background-color: rgb(179, 177, 69);
-    color: white;
+    height: fit-content;
     border-radius: 5px;
-    min-width: 90px;
-    text-align: center;
+    background-color:rgb(236, 205, 164);
+    margin: 0 10px;
+    min-width: 40px;
 }
 span{
     font-size: large;
@@ -198,4 +133,33 @@ span{
 }
 input:focus {
     box-shadow: 0 0 5px 0 rgba(151, 151, 151, 0.589);
+}
+#quantity-box{
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    max-width: 70px;
+}
+#second-form{
+    display: grid;
+    width: fit-content;
+    grid-template-columns: repeat(2,0.5fr);
+    margin: 30px auto;
+    gap:20px 40px
+}
+label{
+    text-wrap: nowrap;
+}
+#second-btn{
+    margin: 20px auto;
+    display: block;
+}
+h1{
+    margin-top: 250px;
+    text-align: center;
+}
+h3{
+    margin-top: 40px;
+    text-align: center;
 }

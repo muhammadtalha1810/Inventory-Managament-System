@@ -1,5 +1,6 @@
 ﻿using IMS_API.Data_Access_Layer;
 using IMS_API.Data_Transfer_Objects;
+using IMS_API.Models;
 using IMS_API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,45 @@ namespace IMS_API.Controllers
             return Ok(_dbContext.GetVarinatsNames(Keyword, ResultsCount));
         }
 
+        [HttpGet("checkvariantnamevalidity")]
+        public IActionResult CheckVariantNameValidity(string VariantName)
+        {
+            return Ok(_dbContext.CheckVariantNameValidity(VariantName));
+        }
+
+        [HttpPost("placeorder")]
+        public IActionResult PlaceOrder(OrderDTO orderDTO)
+        {
+            var userClaim = (User.FindFirst("UserId"));
+            int? userid = null;
+            if(userClaim != null)
+            {
+                userid = int.Parse(userClaim?.Value);
+            }
+            int orderid = 0;
+            if (orderDTO.Customer != null)
+            {
+                int customerid = _dbContext.AddCustomer(orderDTO.Customer);
+                if(customerid != 0) 
+                {
+                    orderid =  _dbContext.PlaceOrder(orderDTO.PaymentMethod, orderDTO.PaymentMethod == "Cash"? "initiated":"pending", CustomerID: customerid, PlacedBy: userid);
+                }
+            }
+            else
+            {
+                orderid = _dbContext.PlaceOrder(orderDTO.PaymentMethod, orderDTO.PaymentMethod == "Cash" ? "initiated" : "pending", PlacedBy: userid);
+            }
+            if(orderid == 0)
+            {
+                return NotFound(new { message = "Some error occured" });
+            }
+            foreach(OrderItem orderItem in orderDTO.OrderItems)
+            {
+                _dbContext.AddOrderItem(orderItem, orderid);
+            }
+            return Ok(new { orderid = orderid });
+        }
+
         [HttpGet("mobiledata/{modelId}")]
         public IActionResult GetModelData(int modelId)
         {
@@ -63,6 +103,12 @@ namespace IMS_API.Controllers
         public IActionResult GetBrandNames(string Keyword, int ResultsCount)
         {
             return Ok(_dbContext.GetBrandNames(Keyword, ResultsCount));
+        }
+
+        [HttpGet("getwarehousenames")]
+        public IActionResult GetWareHouseNames(string Keyword, int ResultsCount)
+        {
+            return Ok(_dbContext.GetWareHouseNames(Keyword, ResultsCount));
         }
 
         [HttpPost("addmanufacturer")]
@@ -166,6 +212,30 @@ namespace IMS_API.Controllers
             return Unauthorized(new { message = "You don't have the permission to complete this action" });
         }
 
+        [HttpPost("addstock")]
+        [Authorize]
+        public IActionResult AddStock(AddStockDTO stock)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value); // or any other claim type
+            //var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+
+            var user = _dbContext.GetUser(userid);
+
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.AddStock(stock);
+                if (result == "success")
+                {
+                    return Ok(new { message = "Stock Added" });
+                }
+                else
+                {
+                    return BadRequest(new { message = "Incorrect Form Data" });
+                }
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
 
         [HttpGet("getorders")]
         [Authorize]
@@ -177,6 +247,34 @@ namespace IMS_API.Controllers
             {
                 var result = _dbContext.GetOrders(PageNumber, PageSize, OrderStatus);
                 return Ok(result);
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
+        [HttpGet("getorder/{orderid}")]
+        [Authorize]
+        public IActionResult GetOrder(int orderid)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.GetOrder(orderid);
+                return Ok(result);
+            }
+            return Unauthorized(new { message = "You don't have the permission to complete this action" });
+        }
+
+        [HttpGet("updateorderstatus")]
+        [Authorize]
+        public IActionResult GetOrder(int orderid, string orderstatus)
+        {
+            var userid = int.Parse(User.FindFirst("UserId")?.Value);
+            var user = _dbContext.GetUser(userid);
+            if (user != null && user.UserType.ToLower() == "admin")
+            {
+                var result = _dbContext.UpdateOrder(orderid, orderstatus);
+                return Ok(new {message = result});
             }
             return Unauthorized(new { message = "You don't have the permission to complete this action" });
         }

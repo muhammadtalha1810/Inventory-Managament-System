@@ -14,7 +14,7 @@
                 <button class="list-button" (click)="this.current_page = 'addmobileimage'">Add Mobile Images</button>
             </div>
         </div>
-        <!-- <div id="collapsible-container">
+        <div id="collapsible-container">
             <button id="header-button" (click)="this.isViewEntitiesOpened = !this.isViewEntitiesOpened;">
                 <span id="plus-minus-sign" [textContent]="isViewEntitiesOpened ? '-' : '+' "></span>
                 <span>View Entities</span>
@@ -26,7 +26,7 @@
                 <button class="list-button" (click)="this.current_page = 'viewvariant'">View Variants</button>
                 <button class="list-button" (click)="this.current_page = 'viewmanufacturer'">View Manufacturers</button>
             </div>
-        </div> -->
+        </div>
         
     </div>
     <div [ngSwitch]="current_page" id="right-container">

@@ -57,6 +57,7 @@
     border: none;
     background-color: transparent;
     text-wrap: nowrap;
+    width: 100%;
 }
 .list-button:hover {
     background-color: antiquewhite;

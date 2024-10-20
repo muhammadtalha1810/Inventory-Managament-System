@@ -6,3 +6,6 @@
     margin: 10px 100px;
     color: green;
 }
+#error-message{
+    display: inline;
+}

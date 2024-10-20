@@ -1,32 +1,44 @@
-<div id="orders-list">
+<div id="orders-list" *ngIf="orderphase === 'first'">
     <div id="top-bar">
         <label for="order-type">Enter variant name</label>
         <input type="text" id="varinat-input" list="variant-list" [formControl]="variantName" (input)="variantinput()">
         <datalist id="variant-list">
             <option *ngFor="let variant of varinatnameslist">{{variant.name}}</option>
         </datalist>
-        <button class="open-order-btn" ><span>+  </span>    Add Varinat</button>
+        <button class="open-order-btn" (click)="addvariant()"><span>+  </span>    Add Varinat</button>
+        <label for="payment-method">Payment Method</label>
+        <select id="payment-method" [(ngModel)]="paymentMethod">
+            <option value="Cash">Cash</option>
+            <option value="Credit/Debit Card">Credit/Debit Card</option>
+        </select>
+        <app-message id="app-msg"></app-message>
     </div>
-    <div id="order-item" *ngFor="let order of orders">
+    <div id="order-item" *ngFor="let orderitem of orderitems">
         <div id="left-container">
-            <p id="order-name">Order ID: {{order.id}}</p>
-            <p id="order-body">Payment Method: {{order.paymentMethod}}</p>
-            <p>Total Price : {{order.totalPrice}}$</p>
+            <p id="order-name">{{orderitem.variantName}}</p>
+            <p id="order-body">Unit Price: {{orderitem.unitPrice}}$</p>
+            <div id="qunantiy-container">
+                <button class="plus-minus-btn" (click)="decreaseQuantity(orderitem)">-</button>
+                <input id="quantity-box" type="number" min="1" step="1" name="quantity" [value]="orderitem.quantity" (change)="quantityInput(orderitem)" [(ngModel)]="orderitem.quantity">
+                <button class="plus-minus-btn" (click)="increaseQuantity(orderitem)">+</button>
+            </div>
+            <p>{{calculateItemPrice(orderitem.unitPrice,orderitem.quantity)}}$</p>
         </div>
 
 
         <div id="right-container" >
-            <button class="open-order-btn" (click)="openorder(order.id)" >View</button>
+            <button class="open-order-btn" (click)="deleteItem(orderitem)">Delete</button>
         </div>
-        <p [ngClass]="{'initiated-text': order.status == 'initiated',
-                           'shipped-text': order.status == 'shipped',
-                           'delivered-text': order.status == 'delivered',
-                           'declined-text': order.status == 'declined',
-                           'pending-text': order.status == 'pending'}">
-                {{order.status}}
-        </p>
     </div>
-    <p *ngIf="orders.length == 0" id="no-orders-found">No orders found</p>
+    <p *ngIf="orderitems.length == 0" id="no-orders-found">No orders found</p>
+    
+    <div id="order-pane">
+        <p>Total Price: {{getTotalPrice()}}</p>
+        <button class="open-order-btn" (click)="secondphase()">{{usertype === 'user'? paymentMethod === 'Cash'? 'Place Order': 'Proceed To Pay' : 'Add Details'}}</button>
+    </div>
+    
+
+
     <div id="pagination-pane">
         <select id="page-size-select" [(ngModel)]="page_size" (change)="fetchorders()">
             <option value="25">25</option>
@@ -39,6 +51,26 @@
         <button id="next-page-btn" (click)="nextPage()" class="page-btn"
             [disabled]="current_page == total_pages">&gt;</button>
     </div>
-    <app-message id="app-msg"></app-message>
+</div>
+<div *ngIf="orderphase === 'second'">
+    <form [formGroup]="customerForm" id="second-form">
+        <label for="firstname-input">First Name</label>
+        <input type="text" name="firstname" id="firstname-input" formControlName="firstName">
+        <label for="lastName-input">Last Name</label>
+        <input type="text" name="lastName" id="lastName-input" formControlName="lastName">
+        <label for="email-input">Email</label>
+        <input type="email" name="email" id="email-input" formControlName="email">
+        <label for="phoneNumber-input">Phone Number</label>
+        <input type="text" name="phoneNumber" id="phoneNumber-input" formControlName="phoneNumber">
+    </form>
+    <button class="open-order-btn" id="second-btn" (click)="thirdphase()">{{paymentMethod === 'Cash'? 'Place Order': 'Proceed To Pay'}}</button>
+</div>
+<div *ngIf="orderphase === 'third'">
+    <p>Payment Gateway</p>
+</div>
+<div *ngIf="orderphase === 'fourth'">
+    <h1>Order Successfull</h1>
+    <h3>Order Id: {{orderid}} <a [routerLink]="'/order/' + orderid">Track Order</a></h3>
+    
 </div>
 <app-dialog (dialogresult)="handleDialogResult($event)"></app-dialog>

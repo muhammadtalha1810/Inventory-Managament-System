@@ -70,6 +70,22 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "AddStock",
+    "RelativePath": "api/MobileModel/addstock",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "stock",
+        "Type": "IMS_API.Data_Transfer_Objects.AddStockDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
     "Method": "AddVariants",
     "RelativePath": "api/MobileModel/addvariant",
     "HttpMethod": "POST",
@@ -80,6 +96,22 @@
         "Name": "variantDTO",
         "Type": "IMS_API.Data_Transfer_Objects.VariantDTO",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "CheckVariantNameValidity",
+    "RelativePath": "api/MobileModel/checkvariantnamevalidity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "VariantName",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -165,6 +197,22 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetOrder",
+    "RelativePath": "api/MobileModel/getorder/{orderid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
     "Method": "GetRequests",
     "RelativePath": "api/MobileModel/getorders",
     "HttpMethod": "GET",
@@ -212,6 +260,27 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetWareHouseNames",
+    "RelativePath": "api/MobileModel/getwarehousenames",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Keyword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ResultsCount",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
     "Method": "GetModelData",
     "RelativePath": "api/MobileModel/mobiledata/{modelId}",
     "HttpMethod": "GET",
@@ -222,6 +291,43 @@
         "Name": "modelId",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "PlaceOrder",
+    "RelativePath": "api/MobileModel/placeorder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderDTO",
+        "Type": "IMS_API.Data_Transfer_Objects.OrderDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.MobileModelController",
+    "Method": "GetOrder",
+    "RelativePath": "api/MobileModel/updateorderstatus",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "orderstatus",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -393,6 +499,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.AuthController",
+    "Method": "GetUserType",
+    "RelativePath": "auth/getusertype",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

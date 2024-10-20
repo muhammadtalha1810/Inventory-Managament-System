@@ -23,8 +23,8 @@ export class AddstockComponent {
  
   constructor(private mobiledataservice:MobiledataService, private fb: FormBuilder){
     this.addstockform = this.fb.group({
-      brandName: ['', Validators.required],
-      modelName: ['', Validators.required],
+      //brandName: ['', Validators.required],
+      //modelName: ['', Validators.required],
       variantName: ['', Validators.required],
       manufacturerName: ['', Validators.required],
       quantity: [null, Validators.required],
@@ -120,7 +120,7 @@ export class AddstockComponent {
     }
     this.mobiledataservice.getVariantNames(keyword, 5).subscribe(
       (response) => {
-        this.modelsNames = response;
+        this.variantNames = response;
       }
     );
   }
@@ -132,7 +132,7 @@ export class AddstockComponent {
     }
     this.mobiledataservice.getManufacturerNames(keyword, 5).subscribe(
       (response) => {
-        this.modelsNames = response;
+        this.manufacturerNames = response;
       }
     );
   }
@@ -144,7 +144,7 @@ export class AddstockComponent {
     }
     this.mobiledataservice.getWarehousesNames(keyword, 5).subscribe(
       (response) => {
-        this.modelsNames = response;
+        this.warehouseNames = response;
       }
     );
   }

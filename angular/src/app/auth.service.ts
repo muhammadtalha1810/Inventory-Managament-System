@@ -19,6 +19,11 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/isLoggedIn`,{ withCredentials: true });
   }
 
+
+  getusertype():Observable<any>{
+    return this.http.get(`${this.apiUrl}/getusertype`,{ withCredentials: true });
+  }
+
   logout():Observable<any>{
     return this.http.post(`${this.apiUrl}/logout`, { withCredentials: true });
   }

@@ -17,6 +17,6 @@ import { AddmobileimageComponent } from '../addmobileimage/addmobileimage.compon
 export class InventoryPageComponent {
   current_page: string = "addstock";
   is_admin: boolean = true;
-  isAddEntitiesOpened: boolean = false;
+  isAddEntitiesOpened: boolean = true;
   isViewEntitiesOpened: boolean = false;
 }
