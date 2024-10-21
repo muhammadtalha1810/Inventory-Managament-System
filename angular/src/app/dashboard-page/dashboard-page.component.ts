@@ -101,7 +101,7 @@ export class DashboardPageComponent implements OnInit {
     const body = {
       pageNumber: this.current_page,
       pageSize: this.page_size,
-      brandFilter: this.filter_data['brands'].selected.join(','),
+      brandsFilter: this.filter_data['brands'].selected.join(','),
       priceFilterMin: this.price_filter_min_value,
       priceFilterMax: this.price_filter_max_value,
       ratingFilterMin: this.rating_filter_min_value,

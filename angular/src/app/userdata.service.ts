@@ -43,6 +43,11 @@ export class UserdataService {
     return this.http.get(`${this.apiUrl}/getrequests?PageNumber=${PageNumber}&PageSize=${PageSize}&RequestStatus=${RequestStatus}`, { withCredentials: true})
   }
 
+  addRequest(body:any):Observable<any>
+  {
+    return this.http.post(`${this.apiUrl}/addrequests`, body, { withCredentials: true});
+  }
+
   approveRequest(requestid:number)
   {
     return this.http.get(`${this.apiUrl}/approverequest?RequestId=${requestid}`,  { withCredentials: true });

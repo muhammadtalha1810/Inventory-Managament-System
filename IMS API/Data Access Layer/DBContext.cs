@@ -864,6 +864,29 @@ namespace IMS_API.Data_Access_Layer
             }
         }
 
+        public string AddRequest(RequestDTO request)
+        {
+            List<Object> requests = new List<Object>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("AddRequest", conn)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                cmd.Parameters.AddWithValue("@RequestTitle", request.Title);
+                cmd.Parameters.AddWithValue("@RequestBody", request.Body);
+
+                var result = new SqlParameter("@Result", SqlDbType.VarChar, 100);
+                result.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(result);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                return result.Value.ToString();
+            }
+        }
+
         public object GetOrders(int PageNumber, int PageSize, string OrderStatus)
         {
             List<Object> orders = new List<Object>();

@@ -239,7 +239,7 @@ namespace IMS_API.Controllers
 
         [HttpGet("getorders")]
         [Authorize]
-        public IActionResult GetRequests(int PageNumber, int PageSize, string OrderStatus)
+        public IActionResult GetOrders(int PageNumber, int PageSize, string OrderStatus)
         {
             var userid = int.Parse(User.FindFirst("UserId")?.Value);
             var user = _dbContext.GetUser(userid);

@@ -139,3 +139,9 @@ dialog{
     color: white;
     border-radius: 5px;
 }
+#add-request-btn{
+    margin-left: 40px;
+    background-color: rgb(66, 172, 93);
+    color: white;
+    cursor: pointer;
+}

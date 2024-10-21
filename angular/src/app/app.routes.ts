@@ -19,6 +19,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { OrderComponent } from './order/order.component';
 import { NeworderComponent } from './neworder/neworder.component';
+import { AddrequestComponent } from './addrequest/addrequest.component';
 
 export const routes: Routes = [
     {path: '', component: DashboardPageComponent},
@@ -40,5 +41,6 @@ export const routes: Routes = [
     {path: 'adduser', component: AdduserComponent},
     {path: 'aboutus', component: AboutusComponent},
     {path: 'order/:id', component: OrderComponent},
-    {path: 'neworder', component: NeworderComponent}
+    {path: 'neworder', component: NeworderComponent},
+    {path: 'addrequest', component: AddrequestComponent}
 ];

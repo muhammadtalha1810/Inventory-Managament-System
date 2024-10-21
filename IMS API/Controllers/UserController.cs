@@ -89,6 +89,13 @@ namespace IMS_API.Controllers
             return Unauthorized(new { message = "You don't have the permission to complete this action" });
         }
 
+        [HttpPost("addrequests")]
+        public IActionResult AddRequests(RequestDTO request)
+        {
+            var result = _dbContext.AddRequest(request);
+            return Ok(new { message = result });
+        }
+
         [HttpGet("approverequest")]
         [Authorize]
         public IActionResult ApproveRequest(int RequestId)

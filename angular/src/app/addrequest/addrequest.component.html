@@ -1,0 +1,11 @@
+<div id="main-container">
+    <h2>Add Request</h2>
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+        <label for="request-title">Request Title</label>
+        <input type="text" name="request-title" id="request-title" formControlName="title">
+        <label for="request-body">Request Details</label>
+        <textarea name="request-body" id="request-body" formControlName="body"></textarea>
+        <button type="submit" id="submit-btn">Submit Request</button>
+    </form>
+    <app-message></app-message>
+</div>

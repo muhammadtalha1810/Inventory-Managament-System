@@ -45,7 +45,9 @@ export class RequestsPageComponent implements OnInit{
       this.total_pages = data.totalPages;
     });
   }
-
+  addrequest():void{
+    this.router.navigate(['/addrequest']);
+  }
   requests: any[] = [];
   openApproveDialog(requestid:number){
     this.dialogaction = 'approve';

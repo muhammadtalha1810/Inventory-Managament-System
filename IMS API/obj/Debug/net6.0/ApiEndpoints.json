@@ -213,7 +213,7 @@
   },
   {
     "ContainingType": "IMS_API.Controllers.MobileModelController",
-    "Method": "GetRequests",
+    "Method": "GetOrders",
     "RelativePath": "api/MobileModel/getorders",
     "HttpMethod": "GET",
     "IsController": true,
@@ -375,6 +375,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "IMS_API.Controllers.UserController",
+    "Method": "AddRequests",
+    "RelativePath": "api/user/addrequests",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "IMS_API.Data_Transfer_Objects.RequestDTO",
         "IsRequired": true
       }
     ],
