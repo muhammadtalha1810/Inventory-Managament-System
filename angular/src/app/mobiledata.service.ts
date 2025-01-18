@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class MobiledataService {
-  private apiUrl = 'https://localhost:7065/api/MobileModel';
+  private apiUrl = 'https://localhost/api/MobileModel';
 
   constructor(private http: HttpClient) { }
 

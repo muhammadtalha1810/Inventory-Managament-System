@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IMS_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Images")]
     [ApiController]
     public class ImagesController : ControllerBase
     {

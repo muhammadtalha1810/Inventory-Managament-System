@@ -7,6 +7,7 @@ using System.Security.Claims;
 using IMS_API.Data_Transfer_Objects;
 using IMS_API.Models;
 using IMS_API.Data_Access_Layer;
+using IMS_API.Exceptions;
 
 namespace IMS_API.Controllers
 {
@@ -22,11 +23,22 @@ namespace IMS_API.Controllers
         }
 
         [HttpPost("login")]
+        [DetailedExceptionFilter]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(DetailedErrorResponse), StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> GetName(LoginObjectDTO loginObjectDTO)
         {
             if (ModelState.IsValid)
             {
-                var user = _dbContext.AuthenticateUser(loginObjectDTO);
+                try
+                {
+                    var user = _dbContext.AuthenticateUser(loginObjectDTO);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new DetailedException(ex);
+                }
 
                 if (user == null)
                 {
@@ -50,12 +62,20 @@ namespace IMS_API.Controllers
                     //IsPersistent = true,
                 };
 
-                await HttpContext.SignInAsync(
+                try
+                {
+                    await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
 
-                return Ok(new { message = "Logged in successfully." });
+                    return Ok(new { message = "Logged in successfully." });
+                }
+                catch (Exception ex)
+                {
+                    throw new DetailedException(ex);
+                }
+
             }
 
             // Something failed

@@ -101,7 +101,7 @@ export class DashboardPageComponent implements OnInit {
     const body = {
       pageNumber: this.current_page,
       pageSize: this.page_size,
-      brandsFilter: this.filter_data['brands'].selected.join(','),
+      brandsFilter: this.filter_data['brands'].selected.join(',') == "" ? null : this.filter_data['brands'].selected.join(','),
       priceFilterMin: this.price_filter_min_value,
       priceFilterMax: this.price_filter_max_value,
       ratingFilterMin: this.rating_filter_min_value,
@@ -110,7 +110,7 @@ export class DashboardPageComponent implements OnInit {
       storageFilterValue: this.storage_filter_value,
       batteryFilterMin: this.battery_filter_min_value,
       batteryFilterMax: this.battery_filter_max_value,
-      searchKeyword: this.search_input_value
+      searchKeyword: this.search_input_value == "" ? null : this.search_input_value
     }
     this.mobiledataService.getMobileData(body).subscribe((data: any) => {
       this.products = data.data;

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace IMS_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("MobileModel")]
     [ApiController]
     public class MobileModelController : ControllerBase
     {
